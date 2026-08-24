@@ -1,5 +1,5 @@
 ## Title
-> Software App
+> Software Application
 
 ## Team Members
 > Angel Lopez Herrera
