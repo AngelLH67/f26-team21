@@ -1,7 +1,7 @@
 ## Title
-> Your project title
+> Software App
 
 ## Team Members
-> Team Member #1 name
+> Angel Lopez Herrera
 
-> Team Member #2 name
+> Ahnesti Lott
