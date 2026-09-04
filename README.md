@@ -12,7 +12,7 @@
 
 
 ## App Functions
-3. SysAdmin:
+2. SysAdmin:
     1. Manage user access - Manage user accounts and restrict or remove users when needed
     2. Moderate services - Manage course listings and study groups 
     3. Moderate reviews - Review reports of inappropriate users or groups 
