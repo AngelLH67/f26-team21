@@ -1,5 +1,5 @@
 ## Title
-> Software Application
+> StudyMatch
 
 ## Team Members
 > Angel Lopez Herrera
@@ -16,3 +16,9 @@
     3. Browse study partners/groups by course - Students can view all the students and study groups that are also enrolled in the same classes as them.
     4. Create or join study groups - Students can create study groups that other students can join.
     5. Schedule/view study sessions - Students can view any study sessions that are scheduled and they can RSVP to them.
+
+2. SysAdmin:
+    1. Manage user access - Manage user accounts and restrict or remove users when needed
+    2. Moderate services - Manage course listings and study groups 
+    3. Moderate reviews - Review reports of inappropriate users or groups 
+    4. View usage statistics - Monitor platform activity and user engagement 
