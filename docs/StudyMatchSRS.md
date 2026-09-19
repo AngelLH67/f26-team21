@@ -1,8 +1,8 @@
 
 # Requirements – Starter Template
 
-**Project Name:** StudyMatch \ 
-**Team:** Angel Lopez (Sysadmin), Ahnesti Lott (Student/Customer) \ 
+**Project Name:** StudyMatch \
+**Team:** Angel Lopez - Sysadmin, Ahnestti Lott - Customer/Student \
 **Course:** CSC 340\
 **Version:** 1.0\
 **Date:** 2026-09-17
@@ -44,7 +44,7 @@
 
 
 ### 2.1 Customer Stories
-- **US‑1 — <Create a profile>**  
+- **US‑1 — Create a profile**  
   _Story:_ As a student, I want to create a profile so that other students can learn about my study preferences.  
   _Acceptance:_
   ```gherkin
@@ -54,7 +54,7 @@
     Then  <the student's profile is created and can be viewed by other students>
   ```
 
-- **US‑2 — <Add Courses>**  
+- **US‑2 — Add Courses**  
   _Story:_ As a student, I want to add my courses so that I can find students taking the same classes.  
   _Acceptance:_
   ```gherkin
@@ -64,7 +64,7 @@
     Then  <the course is added to the student's profile>
   ```
 
-  - **US‑3 — <Browse Study Groups>**  
+  - **US‑3 — Browse Study Groups**  
   _Story:_ As a student, I want to browse study groups in my courses so that I can find relevant groups.  
   _Acceptance:_
   ```gherkin
@@ -74,7 +74,7 @@
     Then  <the system displays study groups related to the student's courses>
   ```
 
-  - **US‑4 — <Create Study Groups>**  
+  - **US‑4 — Create Study Groups**  
   _Story:_ As a student, I want to create study groups so that I can organize sessions with classmates.  
   _Acceptance:_
   ```gherkin
@@ -84,7 +84,7 @@
     Then  <the new study group is available for classmates to view and join>
   ```
 
-  - **US‑5 — <Enter Availability>**  
+  - **US‑5 — Enter Availability**  
   _Story:_ As a student, I want to enter my availability so that I can find sessions that fit my schedule.  
   _Acceptance:_
   ```gherkin
@@ -95,7 +95,7 @@
   ```
 
 ### 2.2 SysAdmin Stories
-- **US‑6 — <Remove Inappropriate Groups>**  
+- **US‑6 — Remove Inappropriate Groups**  
   _Story:_ As an administrator, I want to remove inappropriate groups so that the platform remains safe and relevant. 
   _Acceptance:_
   ```gherkin
@@ -105,7 +105,7 @@
     Then  the group is no longer available on the platform
   ```
 
-- **US‑7 — <Manage Course Listings>**  
+- **US‑7 — Manage Course Listings**  
   _Story:_ As an administrator, I want to manage course listings so that all university courses are available for students to join.  
   _Acceptance:_
   ```gherkin
@@ -115,7 +115,7 @@
     Then  the course information is updated and the course is available for students to join
   ```
 
-- **US‑8 — <View Registered Users>**  
+- **US‑8 — View Registered Users**  
   _Story:_ As an administrator, I want to view a list of all registered users so that I can track platform usage.
   _Acceptance:_
   ```gherkin
