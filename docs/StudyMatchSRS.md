@@ -22,6 +22,7 @@
 - **SysAdmin** — Maintain the platform, manage access, and review reports and activity
 
 **Scope (this semester).**
+<<<<<<< Updated upstream
 - <capability 1> Students can create and manage their user profiles.
 - <capability 2> Students can add courses and set availability 
 - <capability 3> Students can create or join study groups.
@@ -35,6 +36,21 @@
 - <deferred 1> Integration with external college registration systems.
 - <deferred 2> File sharing in courses/study groups
 - <deferred 2> Video conferencing or built-in video meetings.
+=======
+- <1> Students can create and manage their user profiles.
+- <2> Students can add courses and set availability 
+- <3> Students can create or join study groups.
+- <4> Students can post study sessions and rsvp them
+- <5> SysAdmins can manage user access.
+- <6> SysAdmins can manage course and study group listings.
+- <7> SysAdmins can review reports of inappropriate users or groups.
+- <8> SysAdmins can monitor user activity and engagement.
+
+**Out of scope (deferred).**
+- <1> Integration with external college registration systems.
+- <2> File sharing in courses/study groups
+- <2> Video conferencing or built-in video meetings.
+>>>>>>> Stashed changes
 
 > This document is **requirements‑level** and solution‑neutral; design decisions (UI layouts, API endpoints, schemas) are documented separately.
 
@@ -44,6 +60,7 @@
 Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`.** Each story includes at least one **Given/When/Then** scenario.
 
 ### 2.1 Customer Stories
+<<<<<<< Updated upstream
 - **US‑1 — <short title>**  
   _Story:_ As a customer, I want … so that …  
   _Acceptance:_
@@ -62,6 +79,56 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Given <preconditions>
     When  <action>
     Then  <observable outcome>
+=======
+- **US‑1 — <Create a profile>**  
+  _Story:_ As a student, I want to create a profile so that other students can learn about my study preferences.  
+  _Acceptance:_
+  ```gherkin
+  Scenario: <Student creates a profile>
+    Given <the student has an account>
+    When  <the student enters their profile information and study preferences>
+    Then  <the student's profile is created and can be viewed by other students>
+  ```
+
+- **US‑2 — <Add Courses>**  
+  _Story:_ As a student, I want to add my courses so that I can find students taking the same classes.  
+  _Acceptance:_
+  ```gherkin
+  Scenario: <Student adds a course>
+    Given <the student is logged into their account>
+    When  <the student selects and adds a course>
+    Then  <the course is added to the student's profile>
+  ```
+
+  - **US‑3 — <Browse Study Groups>**  
+  _Story:_ As a student, I want to browse study groups in my courses so that I can find relevant groups.  
+  _Acceptance:_
+  ```gherkin
+  Scenario: <Student browses study groups>
+    Given <the student has added courses to their profile>
+    When  <the student views available study groups>
+    Then  <the system displays study groups related to the student's courses>
+  ```
+
+  - **US‑4 — <Create Study Groups>**  
+  _Story:_ As a student, I want to create study groups so that I can organize sessions with classmates.  
+  _Acceptance:_
+  ```gherkin
+  Scenario: <Student creates a study group>
+    Given <the student is logged into their account>
+    When  <the student enters the study group information and creates the group>
+    Then  <the new study group is available for classmates to view and join>
+  ```
+
+  - **US‑5 — <Enter Availability>**  
+  _Story:_ As a student, I want to enter my availability so that I can find sessions that fit my schedule.  
+  _Acceptance:_
+  ```gherkin
+  Scenario: <Student enters availability>
+    Given <the student is logged into their account>
+    When  <the student enters the times they are available>
+    Then  <the system saves the student's availability and shows compatible study sessions>
+>>>>>>> Stashed changes
   ```
 
 ### 2.2 SysAdmin Stories
