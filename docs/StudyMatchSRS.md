@@ -125,6 +125,16 @@
     Then  the system displays the registered users
   ```
 
+- **US‑9 — Review Reported Users**  
+  _Story:_ As an administrator, I want to review reports submitted about users so that inappropriate behavior can be addressed on the platform.
+  _Acceptance:_
+  ```gherkin
+  Scenario: Administrator reviews a reported user
+    Given a user has been reported on the platform
+    When  the administrator views the report
+    Then  the system displays the reported user's information and the reason for the report
+  ```
+
 ---
 
 ## 3. Non‑Functional Requirements (make them measurable)
