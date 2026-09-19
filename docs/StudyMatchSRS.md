@@ -1,10 +1,10 @@
 
 # Requirements – Starter Template
 
-**Project Name:** StudyMatch
-**Team:** Angel Lopez (Sysadmin), Ahnesti Lott (Student/Customer)
-**Course:** CSC 340
-**Version:** 1.0
+**Project Name:** StudyMatch \ 
+**Team:** Angel Lopez (Sysadmin), Ahnesti Lott (Student/Customer) \ 
+**Course:** CSC 340\
+**Version:** 1.0\
 **Date:** 2026-09-17
 
 ---
@@ -22,21 +22,6 @@
 - **SysAdmin** — Maintain the platform, manage access, and review reports and activity
 
 **Scope (this semester).**
-<<<<<<< Updated upstream
-- <capability 1> Students can create and manage their user profiles.
-- <capability 2> Students can add courses and set availability 
-- <capability 3> Students can create or join study groups.
-- <capability 4> Students can post study sessions and rsvp them
-- <capability 5> SysAdmins can manage user access.
-- <capability 6> SysAdmins can manage course and study group listings.
-- <capability 7> SysAdmins can review reports of inappropriate users or groups.
-- <capability 8> SysAdmins can monitor user activity and engagement.
-
-**Out of scope (deferred).**
-- <deferred 1> Integration with external college registration systems.
-- <deferred 2> File sharing in courses/study groups
-- <deferred 2> Video conferencing or built-in video meetings.
-=======
 - <1> Students can create and manage their user profiles.
 - <2> Students can add courses and set availability 
 - <3> Students can create or join study groups.
@@ -49,37 +34,16 @@
 **Out of scope (deferred).**
 - <1> Integration with external college registration systems.
 - <2> File sharing in courses/study groups
-- <2> Video conferencing or built-in video meetings.
->>>>>>> Stashed changes
+- <3> Video conferencing or built-in video meetings.
 
 > This document is **requirements‑level** and solution‑neutral; design decisions (UI layouts, API endpoints, schemas) are documented separately.
 
 ---
 
 ## 2. Functional Requirements (User Stories)
-Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`.** Each story includes at least one **Given/When/Then** scenario.
+
 
 ### 2.1 Customer Stories
-<<<<<<< Updated upstream
-- **US‑1 — <short title>**  
-  _Story:_ As a customer, I want … so that …  
-  _Acceptance:_
-  ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
-  ```
-
-- **US‑2 — <short title>**  
-  _Story:_ As a customer, I want … so that …  
-  _Acceptance:_
-  ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
-=======
 - **US‑1 — <Create a profile>**  
   _Story:_ As a student, I want to create a profile so that other students can learn about my study preferences.  
   _Acceptance:_
@@ -128,7 +92,6 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Given <the student is logged into their account>
     When  <the student enters the times they are available>
     Then  <the system saves the student's availability and shows compatible study sessions>
->>>>>>> Stashed changes
   ```
 
 ### 2.2 SysAdmin Stories
