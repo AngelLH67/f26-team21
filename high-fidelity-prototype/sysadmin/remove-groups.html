@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyMatch - Remove Groups</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header>
+    <h1> StudyMatch</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <h2> Remove Inappropriate Groups</h2>
+    <p> Review groups that have been reported or flagged</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Group Name</th>
+          <th>Course</th>
+          <th>Created By</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody id="groupTable">
+        <tr>
+          <td>CSC 261 Study Group</td>
+          <td>CSC 261</td>
+          <td>Gregory Cheek</td>
+          <td>Active</td>
+        </tr>
+
+        <tr>
+          <td>Math Help</td>
+          <td>MAT 271</td>
+          <td>Julian Dominguez</td>
+          <td>Active</td>
+        </tr>
+
+        <tr>
+          <td>Bruh</td>
+          <td>STA 301</td>
+          <td>Laura Neese</td>
+          <td>Reported</td>
+          <td>
+            <button class="action-button delete-button">
+              Remove
+            </button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Help Plz</td>
+          <td>CSC 350</td>
+          <td>Tracy Jenkins</td>
+          <td>Active</td>
+        </tr>
+
+        <tr>
+          <td>Moggers Only</td>
+          <td>CHE 114</td>
+          <td>Chris Gonzalez</td>
+          <td>Reported</td>
+          <td>
+            <button class="action-button delete-button">
+              Remove
+            </button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>I HATE THIS CLASS</td>
+          <td>PHI 111</td>
+          <td>Kevin Lee</td>
+          <td>Reported</td>
+          <td>
+            <button class="action-button delete-button">
+              Remove
+            </button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <a class="back-button" href="index.html"> Back to Dashboard </a>
+
+  </main>
+
+
+</body>
+
+</html>
