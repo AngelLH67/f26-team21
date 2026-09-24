@@ -1,0 +1,99 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMatch - Edit Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>StudyMatch</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Edit Profile</h2>
+        <p>Update your profile information and study preferences.</p>
+
+        <div class="form-container">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" value="Ahnesti Lott">
+            </div>
+
+            <div class="form-group">
+                <label for="major">Major</label>
+                <input type="text" id="major" value="Computer Science">
+            </div>
+
+            <div class="form-group">
+                <label for="year">Class Year</label>
+                <select id="year">
+                    <option>Freshman</option>
+                    <option>Sophomore</option>
+                    <option>Junior</option>
+                    <option selected>Senior</option>
+                    <option>Graduate Student</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="studyStyle">Preferred Study Style</label>
+                <select id="studyStyle">
+                    <option>Quiet / Independent</option>
+                    <option selected>Collaborative</option>
+                    <option>Discussion Based</option>
+                    <option>Practice Problems</option>
+                    <option>No Preference</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="groupSize">Preferred Group Size</label>
+                <select id="groupSize">
+                    <option>2-3 Students</option>
+                    <option selected>4-5 Students</option>
+                    <option>6+ Students</option>
+                    <option>No Preference</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bio">About Me</label>
+                <textarea id="bio" rows="5">Computer Science student looking for classmates to study and review course material with.</textarea>
+            </div>
+
+            <button class="action-button" onclick="updateProfile()">
+                Save Changes
+            </button>
+
+            <a class="back-button" href="index.html">
+                Cancel
+            </a>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>StudyMatch &copy; 2026</p>
+    </footer>
+
+    <script>
+        function updateProfile() {
+            alert("Profile successfully updated!");
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+
+</html>
+```

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMatch - Browse Study Groups</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>StudyMatch</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Browse Study Groups</h2>
+        <p>View study groups related to your courses.</p>
+
+        <div class="form-container">
+
+            <div class="form-group">
+                <h3>Software Engineering Study Squad</h3>
+                <p><strong>Course:</strong> CSC 340 - Software Engineering</p>
+                <p><strong>Date:</strong> Tuesday</p>
+                <p><strong>Time:</strong> 6:00 PM</p>
+                <p><strong>Location:</strong> Jackson Library</p>
+                <p><strong>Members:</strong> 4 students</p>
+
+                <button class="action-button"
+                    onclick="joinGroup('Software Engineering Study Squad')">
+                    Join Group
+                </button>
+            </div>
+
+            <div class="form-group">
+                <h3>Programming Languages Review</h3>
+                <p><strong>Course:</strong> CSC 339 - Concepts of Programming Languages</p>
+                <p><strong>Date:</strong> Wednesday</p>
+                <p><strong>Time:</strong> 5:30 PM</p>
+                <p><strong>Location:</strong> Petty Building Room 227</p>
+                <p><strong>Members:</strong> 6 students</p>
+
+                <button class="action-button"
+                    onclick="joinGroup('Programming Languages Review')">
+                    Join Group
+                </button>
+            </div>
+
+            <div class="form-group">
+                <h3>CSC 340 Exam Prep</h3>
+                <p><strong>Course:</strong> CSC 340 - Software Engineering</p>
+                <p><strong>Date:</strong> Thursday</p>
+                <p><strong>Time:</strong> 7:00 PM</p>
+                <p><strong>Location:</strong> Online</p>
+                <p><strong>Members:</strong> 3 students</p>
+
+                <button class="action-button"
+                    onclick="joinGroup('CSC 340 Exam Prep')">
+                    Join Group
+                </button>
+            </div>
+
+            <a class="action-button" href="create-group.html">
+                Create Study Group
+            </a>
+
+            <a class="back-button" href="index.html">
+                Back to Dashboard
+            </a>
+
+        </div>
+    </main>
+
+    <script>
+        function joinGroup(groupName) {
+            alert("You successfully joined " + groupName + "!");
+        }
+    </script>
+
+</body>
+
+</html>

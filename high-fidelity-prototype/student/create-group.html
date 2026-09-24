@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMatch - Create Study Group</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>StudyMatch</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Create Study Group</h2>
+        <p>Create a new study group for one of your courses.</p>
+
+        <div class="form-container">
+
+            <div class="form-group">
+                <label for="groupName">Group Name</label>
+                <input type="text" id="groupName"
+                    placeholder="Example: CSC 340 Exam Prep">
+            </div>
+
+            <div class="form-group">
+                <label for="course">Course</label>
+                <select id="course">
+                    <option>Select a course</option>
+                    <option>CSC 340 - Software Engineering</option>
+                    <option>CSC 339 - Concepts of Programming Languages</option>
+                    <option>CSC 362 - System Programming</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date">
+            </div>
+
+            <div class="form-group">
+                <label for="time">Time</label>
+                <input type="time" id="time">
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location"
+                    placeholder="Example: Jackson Library">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Group Description</label>
+                <textarea id="description" rows="5"
+                    placeholder="Describe what your group will be studying."></textarea>
+            </div>
+
+            <button class="action-button" onclick="createGroup()">
+                Create Group
+            </button>
+
+            <a class="back-button" href="index.html">
+                Cancel
+            </a>
+
+        </div>
+    </main>
+
+    <script>
+        function createGroup() {
+            alert("Study group successfully created!");
+            window.location.href = "browse-groups.html";
+        }
+    </script>
+
+</body>
+
+</html>
