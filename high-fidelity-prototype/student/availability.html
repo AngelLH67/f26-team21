@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMatch - Availability</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>StudyMatch</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>My Availability</h2>
+        <p>Enter the times you are available for study sessions.</p>
+
+        <div class="form-container">
+
+            <div class="form-group">
+                <label>Monday</label>
+                <input type="time" id="mondayStart">
+                <span>to</span>
+                <input type="time" id="mondayEnd">
+            </div>
+
+            <div class="form-group">
+                <label>Tuesday</label>
+                <input type="time" id="tuesdayStart">
+                <span>to</span>
+                <input type="time" id="tuesdayEnd">
+            </div>
+
+            <div class="form-group">
+                <label>Wednesday</label>
+                <input type="time" id="wednesdayStart">
+                <span>to</span>
+                <input type="time" id="wednesdayEnd">
+            </div>
+
+            <div class="form-group">
+                <label>Thursday</label>
+                <input type="time" id="thursdayStart">
+                <span>to</span>
+                <input type="time" id="thursdayEnd">
+            </div>
+
+            <div class="form-group">
+                <label>Friday</label>
+                <input type="time" id="fridayStart">
+                <span>to</span>
+                <input type="time" id="fridayEnd">
+            </div>
+
+            <button class="action-button" onclick="saveAvailability()">
+                Save Availability
+            </button>
+
+            <a class="back-button" href="index.html">
+                Cancel
+            </a>
+
+        </div>
+
+        <h2>Compatible Study Sessions</h2>
+
+        <div class="form-container" id="sessions">
+            <p>Save your availability to view compatible study sessions.</p>
+        </div>
+
+    </main>
+
+    <script>
+        function saveAvailability() {
+            const sessions = document.getElementById("sessions");
+
+            sessions.innerHTML = `
+                <div class="form-group">
+                    <h3>Software Engineering Study Squad</h3>
+                    <p>CSC 340</p>
+                    <p>Tuesday at 6:00 PM</p>
+                    <p>Jackson Library</p>
+                </div>
+
+                <div class="form-group">
+                    <h3>Programming Languages Review</h3>
+                    <p>CSC 339</p>
+                    <p>Thursday at 7:00 PM</p>
+                    <p>Petty Building Room 227</p>
+                </div>
+            `;
+
+            alert("Your availability has been saved!");
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMatch - Create Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>StudyMatch</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Create Profile</h2>
+        <p>Create your student profile and add your study preferences.</p>
+
+        <div class="form-container">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Example: Ahnesti Lott">
+            </div>
+
+            <div class="form-group">
+                <label for="major">Major</label>
+                <input type="text" id="major" placeholder="Example: Computer Science">
+            </div>
+
+            <div class="form-group">
+                <label for="year">Class Year</label>
+                <select id="year">
+                    <option>Select your class year</option>
+                    <option>Freshman</option>
+                    <option>Sophomore</option>
+                    <option>Junior</option>
+                    <option>Senior</option>
+                    <option>Graduate Student</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="studyStyle">Preferred Study Style</label>
+                <select id="studyStyle">
+                    <option>Select a study style</option>
+                    <option>Quiet / Independent</option>
+                    <option>Collaborative</option>
+                    <option>Discussion Based</option>
+                    <option>Practice Problems</option>
+                    <option>No Preference</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="groupSize">Preferred Group Size</label>
+                <select id="groupSize">
+                    <option>Select a group size</option>
+                    <option>2-3 Students</option>
+                    <option>4-5 Students</option>
+                    <option>6+ Students</option>
+                    <option>No Preference</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bio">About Me</label>
+                <textarea id="bio" rows="5"
+                    placeholder="Tell other students a little about yourself and your study habits."></textarea>
+            </div>
+
+            <button class="action-button" onclick="saveProfile()">Save Profile</button>
+
+            <a class="back-button" href="index.html">Cancel</a>
+
+        </div>
+    </main>
+
+    <script>
+        function saveProfile() {
+            alert("Profile successfully created!");
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMatch - Browse Students</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>StudyMatch</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Browse Students</h2>
+        <p>Find other students who are enrolled in your courses.</p>
+
+        <div class="form-container">
+
+            <div class="form-group">
+                <label for="course">Select Course</label>
+                <select id="course" onchange="filterStudents()">
+                    <option value="all">All Courses</option>
+                    <option value="CSC340">CSC 340 - Software Engineering</option>
+                    <option value="CSC339">CSC 339 - Concepts of Programming Languages</option>
+                    <option value="CSC362">CSC 362 - System Programming</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="dashboard" id="studentList">
+
+            <div class="card student-card" data-course="CSC340">
+                <h3>Jordan Smith</h3>
+                <p><strong>Major:</strong> Computer Science</p>
+                <p><strong>Course:</strong> CSC 340</p>
+                <p><strong>Study Style:</strong> Collaborative</p>
+                <p><strong>Availability:</strong> Tuesday and Thursday evenings</p>
+
+                <button class="button" onclick="viewStudent('Jordan Smith')">
+                    View Profile
+                </button>
+            </div>
+
+            <div class="card student-card" data-course="CSC339">
+                <h3>Maya Johnson</h3>
+                <p><strong>Major:</strong> Computer Science</p>
+                <p><strong>Course:</strong> CSC 339</p>
+                <p><strong>Study Style:</strong> Practice Problems</p>
+                <p><strong>Availability:</strong> Monday and Wednesday afternoons</p>
+
+                <button class="button" onclick="viewStudent('Maya Johnson')">
+                    View Profile
+                </button>
+            </div>
+
+            <div class="card student-card" data-course="CSC340">
+                <h3>Chris Williams</h3>
+                <p><strong>Major:</strong> Information Systems</p>
+                <p><strong>Course:</strong> CSC 340</p>
+                <p><strong>Study Style:</strong> Discussion Based</p>
+                <p><strong>Availability:</strong> Wednesday and Friday evenings</p>
+
+                <button class="button" onclick="viewStudent('Chris Williams')">
+                    View Profile
+                </button>
+            </div>
+
+            <div class="card student-card" data-course="CSC362">
+                <h3>Taylor Brown</h3>
+                <p><strong>Major:</strong> Computer Science</p>
+                <p><strong>Course:</strong> CSC 362</p>
+                <p><strong>Study Style:</strong> Collaborative</p>
+                <p><strong>Availability:</strong> Tuesday afternoons</p>
+
+                <button class="button" onclick="viewStudent('Taylor Brown')">
+                    View Profile
+                </button>
+            </div>
+
+        </div>
+
+        <a class="back-button" href="index.html">
+            Back to Dashboard
+        </a>
+
+    </main>
+
+    <footer>
+        <p>StudyMatch &copy; 2026</p>
+    </footer>
+
+    <script>
+        function filterStudents() {
+            const selectedCourse = document.getElementById("course").value;
+            const students = document.querySelectorAll(".student-card");
+
+            students.forEach(function(student) {
+                if (selectedCourse === "all" ||
+                    student.dataset.course === selectedCourse) {
+                    student.style.display = "block";
+                } else {
+                    student.style.display = "none";
+                }
+            });
+        }
+
+        function viewStudent(studentName) {
+            alert("Viewing " + studentName + "'s profile.");
+        }
+    </script>
+
+</body>
+
+</html>
+```
