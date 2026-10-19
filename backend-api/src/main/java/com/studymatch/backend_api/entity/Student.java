@@ -1,7 +1,7 @@
 
 package com.studymatch.backend_api.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,7 +27,7 @@ public class Student {
     @Column(nullable = false)
     private String password;
 
-    private LocalDate registrationDate;
+    private LocalDateTime registrationDate;
 
     private String studyPreferences;
 
@@ -37,7 +37,7 @@ public class Student {
     }
 
     public Student(String name, String email, String password,
-                   LocalDate registrationDate, String studyPreferences,
+                   LocalDateTime registrationDate, String studyPreferences,
                    String availability) {
         this.name = name;
         this.email = email;
@@ -79,11 +79,11 @@ public class Student {
         this.password = password;
     }
 
-    public LocalDate getRegistrationDate() {
+    public LocalDateTime getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(LocalDate registrationDate) {
+    public void setRegistrationDate(LocalDateTime registrationDate) {
         this.registrationDate = registrationDate;
     }
 

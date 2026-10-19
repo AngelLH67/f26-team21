@@ -1,7 +1,7 @@
 
 package com.studymatch.backend_api.service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +29,7 @@ public class StudentService {
 
     public Student saveStudent(Student student) {
     if (student.getRegistrationDate() == null) {
-        student.setRegistrationDate(LocalDate.now());
+        student.setRegistrationDate(LocalDateTime.now());
     }
 
     return studentRepository.save(student);
