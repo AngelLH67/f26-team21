@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class StudyGroup {
@@ -21,18 +23,23 @@ public class StudyGroup {
 
     private LocalDateTime meetingTime;
 
-    public StudyGroup() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
 
-    public StudyGroup(String groupName, String status,
-                      LocalDateTime meetingTime) {
-        this.groupName = groupName;
-        this.status = status;
-        this.meetingTime = meetingTime;
+    @ManyToOne
+    @JoinColumn(name = "creator_id")
+    private Student creator;
+
+    public StudyGroup() {
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getGroupName() {
@@ -58,4 +65,21 @@ public class StudyGroup {
     public void setMeetingTime(LocalDateTime meetingTime) {
         this.meetingTime = meetingTime;
     }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public Student getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Student creator) {
+        this.creator = creator;
+    }
 }
+
