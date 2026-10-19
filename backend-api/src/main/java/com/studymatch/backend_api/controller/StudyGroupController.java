@@ -3,12 +3,16 @@ package com.studymatch.backend_api.controller;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.studymatch.backend_api.entity.StudyGroup;
 import com.studymatch.backend_api.service.StudyGroupService;
@@ -29,22 +33,23 @@ public class StudyGroupController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudyGroup> getStudyGroupById(
-            @PathVariable Long id) {
-
+    public StudyGroup getStudyGroupById(@PathVariable Long id) {
         return studyGroupService.getStudyGroupById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Study group not found"));
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public StudyGroup createStudyGroup(@RequestBody StudyGroup studyGroup) {
+        return studyGroupService.saveStudyGroup(studyGroup);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteStudyGroup(@PathVariable Long id) {
-
-        if (studyGroupService.deleteStudyGroup(id)) {
-            return ResponseEntity.noContent().build();
-        }
-
-        return ResponseEntity.notFound().build();
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteStudyGroup(@PathVariable Long id) {
+        studyGroupService.deleteStudyGroup(id);
     }
 }
+
 
