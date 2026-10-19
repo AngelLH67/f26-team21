@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Report {
@@ -20,6 +22,10 @@ public class Report {
     private String status;
 
     private LocalDate date;
+
+    @ManyToOne
+    @JoinColumn(name = "study_group_id")
+    private StudyGroup studyGroup;
 
     public Report() {
     }
@@ -57,5 +63,14 @@ public class Report {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    public StudyGroup getStudyGroup() {
+        return studyGroup;
+    }
+
+    public void setStudyGroup(StudyGroup studyGroup) {
+        this.studyGroup = studyGroup;
+    }
 }
+
 
