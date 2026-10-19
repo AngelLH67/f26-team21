@@ -27,6 +27,14 @@ public class Report {
     @JoinColumn(name = "study_group_id")
     private StudyGroup studyGroup;
 
+    @ManyToOne
+    @JoinColumn(name = "reported_student_id")
+    private Student reportedStudent;
+
+    @ManyToOne
+    @JoinColumn(name = "reporter_id")
+    private Student reporter;
+
     public Report() {
     }
 
@@ -70,6 +78,22 @@ public class Report {
 
     public void setStudyGroup(StudyGroup studyGroup) {
         this.studyGroup = studyGroup;
+    }
+
+    public Student getReportedStudent() {
+        return reportedStudent;
+    }
+
+    public void setReportedStudent(Student reportedStudent) {
+        this.reportedStudent = reportedStudent;
+    }
+
+    public Student getReporter() {
+        return reporter;
+    }
+
+    public void setReporter(Student reporter) {
+        this.reporter = reporter;
     }
 }
 
