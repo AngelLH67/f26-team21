@@ -6,7 +6,7 @@
 
 ## Deployment
 
-**Render API URL:** https://dragonball-api-5i0o.onrender.com/api/characters  
+**Render API URL:** https://studymatch-backend-stmq.onrender.com/  
 
 The API is deployed on Render and uses Neon PostgreSQL for persistent database storage.
 
