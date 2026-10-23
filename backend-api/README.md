@@ -4,6 +4,16 @@
 
 ![Class Diagram](../docs/smuml-class.png)
 
+## Deployment
+
+**Render API URL:** https://dragonball-api-5i0o.onrender.com/api/characters  
+
+The API is deployed on Render and uses Neon PostgreSQL for persistent database storage.
+
+### Cold-Start Note
+
+This API uses Render's free tier. The service may sleep after a period of inactivity. The first request after the service has been idle can take up to a minute while it starts.
+
 
 ## Study groups
 
