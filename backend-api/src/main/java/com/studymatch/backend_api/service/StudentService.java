@@ -29,5 +29,16 @@ public class StudentService {
     public Student saveStudent(Student student) {
         return studentRepository.save(student);
     }
+
+    public Optional<Student> updateStudent(Long id, Student updatedStudent) {
+    return studentRepository.findById(id).map(student -> {
+        student.setName(updatedStudent.getName());
+        student.setEmail(updatedStudent.getEmail());
+        student.setStudyPreferences(updatedStudent.getStudyPreferences());
+        student.setAvailability(updatedStudent.getAvailability());
+
+        return studentRepository.save(student);
+    });
+    }
 }
 
