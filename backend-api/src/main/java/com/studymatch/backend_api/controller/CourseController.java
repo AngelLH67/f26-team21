@@ -2,6 +2,7 @@
 package com.studymatch.backend_api.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -73,5 +74,15 @@ public class CourseController {
 
         return ResponseEntity.notFound().build();
     }
+    
+    @GetMapping("/{id}/students")
+    public ResponseEntity<List<Map<String, Object>>> getStudentsInCourse(
+            @PathVariable Long id) {
+
+        return courseService.getStudentsInCourse(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }
 
