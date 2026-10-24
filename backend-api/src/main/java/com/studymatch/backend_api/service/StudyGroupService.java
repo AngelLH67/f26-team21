@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +15,7 @@ import com.studymatch.backend_api.entity.StudyGroup;
 import com.studymatch.backend_api.repository.StudyGroupRepository;
 import com.studymatch.backend_api.entity.Student;
 import com.studymatch.backend_api.repository.StudentRepository;
+import com.studymatch.backend_api.entity.Course;
 
 @Service
 public class StudyGroupService {
@@ -82,6 +85,26 @@ public class StudyGroupService {
             }
 
             return members;
+        });
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<List<StudyGroup>> getGroupsForStudent(Long studentId) {
+
+        return studentRepository.findById(studentId).map(student -> {
+
+            Set<Long> courseIds = student.getCourses()
+                    .stream()
+                    .map(Course::getId)
+                    .collect(Collectors.toSet());
+
+            if (courseIds.isEmpty()) {
+                return List.<StudyGroup>of();
+            }
+
+            return studyGroupRepository.findByCourseIdIn(
+                    new java.util.ArrayList<>(courseIds)
+            );
         });
     }
 

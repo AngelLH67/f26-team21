@@ -84,6 +84,15 @@ public class StudyGroupController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/student/{studentId}")
+    public ResponseEntity<List<StudyGroup>> getGroupsForStudent(
+            @PathVariable Long studentId) {
+
+        return studyGroupService.getGroupsForStudent(studentId)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }
 
 
