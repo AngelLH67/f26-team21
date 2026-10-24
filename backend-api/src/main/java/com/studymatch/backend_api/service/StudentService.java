@@ -8,14 +8,20 @@ import org.springframework.stereotype.Service;
 
 import com.studymatch.backend_api.entity.Student;
 import com.studymatch.backend_api.repository.StudentRepository;
+import com.studymatch.backend_api.entity.Course;
+import com.studymatch.backend_api.repository.CourseRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class StudentService {
 
     private final StudentRepository studentRepository;
+    private final CourseRepository courseRepository;
 
-    public StudentService(StudentRepository studentRepository) {
+    public StudentService(StudentRepository studentRepository,
+                          CourseRepository courseRepository) {
         this.studentRepository = studentRepository;
+        this.courseRepository = courseRepository;
     }
 
     public List<Student> getAllStudents() {
@@ -40,5 +46,23 @@ public class StudentService {
         return studentRepository.save(student);
     });
     }
+    
+    @Transactional
+    public Optional<Student> enrollStudentInCourse(Long studentId, Long courseId) {
+        Optional<Student> studentOptional = studentRepository.findById(studentId);
+        Optional<Course> courseOptional = courseRepository.findById(courseId);
+
+        if (studentOptional.isEmpty() || courseOptional.isEmpty()) {
+        return Optional.empty();
+        }
+
+        Student student = studentOptional.get();
+        Course course = courseOptional.get();
+
+        student.getCourses().add(course);
+
+        return Optional.of(studentRepository.save(student));
+    }
+
 }
 

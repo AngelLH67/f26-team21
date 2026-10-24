@@ -56,5 +56,17 @@ public class StudentController {
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
+
+    
+    @PostMapping("/{studentId}/courses/{courseId}")
+    public ResponseEntity<Student> enrollStudentInCourse(
+            @PathVariable Long studentId,
+            @PathVariable Long courseId) {
+
+        return studentService.enrollStudentInCourse(studentId, courseId)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }
 
