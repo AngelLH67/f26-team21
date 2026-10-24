@@ -3,19 +3,27 @@ package com.studymatch.backend_api.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.studymatch.backend_api.entity.StudyGroup;
 import com.studymatch.backend_api.repository.StudyGroupRepository;
+import com.studymatch.backend_api.entity.Student;
+import com.studymatch.backend_api.repository.StudentRepository;
 
 @Service
 public class StudyGroupService {
 
     private final StudyGroupRepository studyGroupRepository;
+    private final StudentRepository studentRepository;
 
-    public StudyGroupService(StudyGroupRepository studyGroupRepository) {
+    public StudyGroupService(StudyGroupRepository studyGroupRepository,
+                             StudentRepository studentRepository) {
         this.studyGroupRepository = studyGroupRepository;
+        this.studentRepository = studentRepository;
     }
 
     public List<StudyGroup> getAllStudyGroups() {
@@ -38,6 +46,45 @@ public class StudyGroupService {
 
         return false;
     }
+    
+    @Transactional
+    public boolean joinStudyGroup(Long groupId, Long studentId) {
+        Optional<StudyGroup> groupOptional =
+                studyGroupRepository.findById(groupId);
+
+        Optional<Student> studentOptional =
+                studentRepository.findById(studentId);
+
+        if (groupOptional.isEmpty() || studentOptional.isEmpty()) {
+            return false;
+        }
+
+        StudyGroup group = groupOptional.get();
+        Student student = studentOptional.get();
+
+        group.getMembers().add(student);
+        studyGroupRepository.save(group);
+
+        return true;
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<List<Map<String, Object>>> getGroupMembers(Long groupId) {
+        return studyGroupRepository.findById(groupId).map(group -> {
+            List<Map<String, Object>> members = new ArrayList<>();
+
+            for (Student student : group.getMembers()) {
+                members.add(Map.of(
+                    "id", student.getId(),
+                    "name", student.getName(),
+                    "email", student.getEmail()
+                ));
+            }
+
+            return members;
+        });
+    }
+
 }
 
 
