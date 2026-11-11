@@ -71,4 +71,10 @@ public class CourseUIController {
         courseService.deleteCourse(id);
         return "redirect:/courses";
     }
+
+    // Display the admin dashboard
+    @GetMapping("/admin")
+    public String adminDashboard() {
+        return "admin";
+    }
 }
