@@ -49,6 +49,15 @@ public class Student {
 
     private String availability;
 
+    private String major;
+
+    private String classYear;
+
+    private String preferredGroupSize;
+
+    @Column(length = 2000)
+    private String bio;
+
     
     @ManyToMany
     @JoinTable(
@@ -135,6 +144,39 @@ private Set<Course> courses = new HashSet<>();
 
     public void setCourses(Set<Course> courses) {
         this.courses = courses;
+    }
+
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
+    public String getClassYear() {
+        return classYear;
+    }
+
+    public void setClassYear(String classYear) {
+        this.classYear = classYear;
+    }
+
+    public String getPreferredGroupSize() {
+        return preferredGroupSize;
+    }
+
+    public void setPreferredGroupSize(String preferredGroupSize) {
+        this.preferredGroupSize = preferredGroupSize;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
 }
