@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMatch | Study Groups</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+</head>
+
+<body class="dashboard-page groups-page">
+
+    <div class="app-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <a href="index.html" class="brand">
+                <span class="brand-icon">
+                    <i data-lucide="sprout"></i>
+                </span>
+                <span>StudyMatch</span>
+            </a>
+
+            <div class="sidebar-content">
+
+                <p class="sidebar-label">WORKSPACE</p>
+
+                <nav class="sidebar-nav" aria-label="Main navigation">
+
+                    <a href="index.html" class="nav-link">
+                        <i data-lucide="layout-dashboard"></i>
+                        Dashboard
+                    </a>
+
+                    <a href="manage-courses.html" class="nav-link">
+                        <i data-lucide="book-open"></i>
+                        My Courses
+                    </a>
+
+                    <a href="browse-students.html" class="nav-link">
+                        <i data-lucide="users-round"></i>
+                        Find Students
+                    </a>
+
+                    <a href="browse-groups.html"
+                       class="nav-link active" aria-current="page">
+                        <i data-lucide="messages-square"></i>
+                        Study Groups
+                    </a>
+
+                    <a href="availability.html" class="nav-link">
+                        <i data-lucide="calendar-days"></i>
+                        Availability
+                    </a>
+
+                </nav>
+
+                <p class="sidebar-label sidebar-label-spaced">
+                    MY ACCOUNT
+                </p>
+
+                <nav class="sidebar-nav" aria-label="Account navigation">
+
+                    <a href="create-profile.html" class="nav-link">
+                        <i data-lucide="user-round-plus"></i>
+                        Create Profile
+                    </a>
+
+                    <a href="edit-profile.html" class="nav-link">
+                        <i data-lucide="user-round-pen"></i>
+                        Edit Profile
+                    </a>
+
+                </nav>
+
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-note">
+                    <i data-lucide="heart-handshake"></i>
+                    <p>Better together.</p>
+                    <span>Find your people and make studying easier.</span>
+                </div>
+
+                <p class="sidebar-copyright">© 2026 StudyMatch</p>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <div class="topbar">
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <i data-lucide="chevron-right"></i>
+                    <strong>Study Groups</strong>
+                </div>
+
+                <a href="edit-profile.html"
+                   class="profile-avatar"
+                   aria-label="Edit your profile">
+                    <i data-lucide="user-round"></i>
+                </a>
+            </div>
+
+            <!-- PAGE HEADING -->
+            <section class="groups-heading">
+                <span class="eyebrow">
+                    <i data-lucide="sparkles"></i>
+                    YOUR STUDY COMMUNITY
+                </span>
+
+                <h1>Find your study circle.</h1>
+
+                <p>
+                    Good ideas grow when we learn together.
+                    Find a group that fits your classes and schedule,
+                    or start one of your own.
+                </p>
+            </section>
+
+            <!-- FEATURED BANNER -->
+            <section class="groups-hero">
+                <div class="groups-hero-content">
+
+                    <span class="groups-hero-label">
+                        <i data-lucide="heart-handshake"></i>
+                        GROW TOGETHER
+                    </span>
+
+                    <h2>Make learning a team effort.</h2>
+
+                    <p>
+                        Whether you're preparing for an exam
+                        or working through assignments, the
+                        right study group makes all the difference.
+                    </p>
+
+                    <a href="create-group.html"
+                       class="groups-hero-button">
+                        <i data-lucide="plus"></i>
+                        Create Study Group
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+
+                </div>
+
+                <div class="groups-hero-art" aria-hidden="true">
+                    <div class="group-art-outer">
+                        <div class="group-art-inner">
+                            <i data-lucide="users-round"></i>
+                        </div>
+                    </div>
+
+                    <i data-lucide="sparkles"
+                       class="group-art-sparkle"></i>
+                </div>
+            </section>
+
+            <!-- FILTER SECTION -->
+            <section class="groups-filter-panel">
+                <div class="groups-filter-copy">
+                    <span class="groups-filter-icon">
+                        <i data-lucide="sliders-horizontal"></i>
+                    </span>
+
+                    <div>
+                        <h2>Explore study groups</h2>
+                        <p>Find the right group for your courses.</p>
+                    </div>
+                </div>
+
+                <div class="groups-filter-controls">
+
+                    <div class="groups-filter-field">
+                        <label for="groupSearch">Search groups</label>
+
+                        <div class="group-search-wrap">
+                            <i data-lucide="search"></i>
+
+                            <input
+                                id="groupSearch"
+                                type="search"
+                                placeholder="Search by group or location...">
+                        </div>
+                    </div>
+
+                    <div class="groups-filter-field">
+                        <label for="groupCourse">Filter by course</label>
+
+                        <select id="groupCourse">
+                            <option value="all">All Courses</option>
+                            <option value="CSC340">
+                                CSC 340 - Software Engineering
+                            </option>
+                            <option value="CSC339">
+                                CSC 339 - Programming Languages
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- STUDY GROUP CARDS -->
+            <section class="groups-list-section">
+
+                <div class="groups-results-heading">
+                    <div>
+                        <span class="section-kicker">
+                            STUDY BETTER TOGETHER
+                        </span>
+
+                        <h2>Available study groups</h2>
+                        <p>Find your next study session.</p>
+                    </div>
+
+                    <span class="groups-count" id="groupsCount"
+                          aria-live="polite">
+                        3 groups
+                    </span>
+                </div>
+
+                <div class="groups-grid" id="groupsList">
+
+                    <!-- GROUP 1 -->
+                    <article class="study-group-card"
+                             data-course="CSC340"
+                             data-search="software engineering study squad csc 340 jackson library tuesday">
+
+                        <div class="group-card-top">
+                            <span class="group-card-icon">
+                                <i data-lucide="code-xml"></i>
+                            </span>
+
+                            <span class="group-course-badge">
+                                CSC 340
+                            </span>
+                        </div>
+
+                        <h3>Software Engineering Study Squad</h3>
+
+                        <p class="group-subject">
+                            CSC 340 · Software Engineering
+                        </p>
+
+                        <div class="group-card-divider"></div>
+
+                        <div class="group-detail">
+                            <i data-lucide="calendar-days"></i>
+                            <span>Tuesday</span>
+                        </div>
+
+                        <div class="group-detail">
+                            <i data-lucide="clock-3"></i>
+                            <span>6:00 PM</span>
+                        </div>
+
+                        <div class="group-detail">
+                            <i data-lucide="map-pin"></i>
+                            <span>Jackson Library</span>
+                        </div>
+
+                        <div class="group-card-bottom">
+                            <span class="group-members">
+                                <i data-lucide="users-round"></i>
+                                <span class="member-count">4 students</span>
+                            </span>
+
+                            <button type="button"
+                                    class="join-group-button"
+                                    data-group="Software Engineering Study Squad">
+                                Join Group
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- GROUP 2 -->
+                    <article class="study-group-card"
+                             data-course="CSC339"
+                             data-search="programming languages review csc 339 petty building room 227 wednesday">
+
+                        <div class="group-card-top">
+                            <span class="group-card-icon">
+                                <i data-lucide="book-open"></i>
+                            </span>
+
+                            <span class="group-course-badge">
+                                CSC 339
+                            </span>
+                        </div>
+
+                        <h3>Programming Languages Review</h3>
+
+                        <p class="group-subject">
+                            CSC 339 · Concepts of Programming Languages
+                        </p>
+
+                        <div class="group-card-divider"></div>
+
+                        <div class="group-detail">
+                            <i data-lucide="calendar-days"></i>
+                            <span>Wednesday</span>
+                        </div>
+
+                        <div class="group-detail">
+                            <i data-lucide="clock-3"></i>
+                            <span>5:30 PM</span>
+                        </div>
+
+                        <div class="group-detail">
+                            <i data-lucide="map-pin"></i>
+                            <span>Petty Building Room 227</span>
+                        </div>
+
+                        <div class="group-card-bottom">
+                            <span class="group-members">
+                                <i data-lucide="users-round"></i>
+                                <span class="member-count">6 students</span>
+                            </span>
+
+                            <button type="button"
+                                    class="join-group-button"
+                                    data-group="Programming Languages Review">
+                                Join Group
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- GROUP 3 -->
+                    <article class="study-group-card"
+                             data-course="CSC340"
+                             data-search="csc 340 exam prep software engineering online thursday">
+
+                        <div class="group-card-top">
+                            <span class="group-card-icon">
+                                <i data-lucide="graduation-cap"></i>
+                            </span>
+
+                            <span class="group-course-badge">
+                                CSC 340
+                            </span>
+                        </div>
+
+                        <h3>CSC 340 Exam Prep</h3>
+
+                        <p class="group-subject">
+                            CSC 340 · Software Engineering
+                        </p>
+
+                        <div class="group-card-divider"></div>
+
+                        <div class="group-detail">
+                            <i data-lucide="calendar-days"></i>
+                            <span>Thursday</span>
+                        </div>
+
+                        <div class="group-detail">
+                            <i data-lucide="clock-3"></i>
+                            <span>7:00 PM</span>
+                        </div>
+
+                        <div class="group-detail">
+                            <i data-lucide="video"></i>
+                            <span>Online</span>
+                        </div>
+
+                        <div class="group-card-bottom">
+                            <span class="group-members">
+                                <i data-lucide="users-round"></i>
+                                <span class="member-count">3 students</span>
+                            </span>
+
+                            <button type="button"
+                                    class="join-group-button"
+                                    data-group="CSC 340 Exam Prep">
+                                Join Group
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- NO RESULTS -->
+                <div class="groups-empty-state" id="noGroups" hidden>
+                    <span class="groups-empty-icon">
+                        <i data-lucide="search-x"></i>
+                    </span>
+
+                    <h3>No study groups found</h3>
+
+                    <p>
+                        Try a different search or course,
+                        or create a group of your own!
+                    </p>
+
+                    <button type="button" id="clearGroupFilters">
+                        Clear Filters
+                    </button>
+                </div>
+
+            </section>
+
+            <!-- BOTTOM BANNER -->
+            <section class="groups-bottom-banner">
+                <span class="groups-bottom-icon">
+                    <i data-lucide="plus-circle"></i>
+                </span>
+
+                <div>
+                    <h2>Don't see your perfect study group?</h2>
+                    <p>
+                        Start one and invite classmates to join you.
+                    </p>
+                </div>
+
+                <a href="create-group.html" class="groups-bottom-link">
+                    Create a Group
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+            </section>
+
+            <footer class="dashboard-footer">
+                <span>Made for students, by students.</span>
+                <span>StudyMatch © 2026</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- PROTOTYPE JOIN CONFIRMATION -->
+    <dialog id="joinDialog" class="group-dialog"
+            aria-labelledby="joinDialogTitle">
+
+        <div class="group-dialog-icon">
+            <i data-lucide="check-circle-2"></i>
+        </div>
+
+        <span class="group-dialog-label">LOOKING GOOD!</span>
+
+        <h2 id="joinDialogTitle">You're in!</h2>
+
+        <p id="joinDialogMessage"></p>
+
+        <p class="group-dialog-note">
+            This is a prototype preview. Your membership has
+            not been saved to the database.
+        </p>
+
+        <button type="button" id="closeJoinDialog">
+            Got it!
+        </button>
+    </dialog>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            const searchInput = document.getElementById("groupSearch");
+            const courseSelect = document.getElementById("groupCourse");
+            const cards = document.querySelectorAll(".study-group-card");
+            const count = document.getElementById("groupsCount");
+            const emptyState = document.getElementById("noGroups");
+
+            function filterGroups() {
+                const search = searchInput.value.trim().toLowerCase();
+                const course = courseSelect.value;
+                let visible = 0;
+
+                cards.forEach(function (card) {
+                    const matchesSearch =
+                        card.dataset.search.toLowerCase().includes(search);
+
+                    const matchesCourse =
+                        course === "all" || card.dataset.course === course;
+
+                    const show = matchesSearch && matchesCourse;
+                    card.hidden = !show;
+
+                    if (show) {
+                        visible++;
+                    }
+                });
+
+                count.textContent =
+                    visible + (visible === 1 ? " group" : " groups");
+
+                emptyState.hidden = visible !== 0;
+            }
+
+            searchInput.addEventListener("input", filterGroups);
+            courseSelect.addEventListener("change", filterGroups);
+
+            document.getElementById("clearGroupFilters")
+                .addEventListener("click", function () {
+                    searchInput.value = "";
+                    courseSelect.value = "all";
+                    filterGroups();
+                    searchInput.focus();
+                });
+
+            const dialog = document.getElementById("joinDialog");
+            const dialogMessage = document.getElementById("joinDialogMessage");
+
+            document.querySelectorAll(".join-group-button")
+                .forEach(function (button) {
+                    button.addEventListener("click", function () {
+                        const groupName = button.dataset.group;
+
+                        dialogMessage.textContent =
+                            "You've selected " + groupName +
+                            ". This is what joining a group could look like!";
+
+                        dialog.showModal();
+                    });
+                });
+
+            document.getElementById("closeJoinDialog")
+                .addEventListener("click", function () {
+                    dialog.close();
+                });
+
+            dialog.addEventListener("click", function (event) {
+                if (event.target === dialog) {
+                    dialog.close();
+                }
+            });
+
+            filterGroups();
+        });
+    </script>
+
+</body>
+</html>

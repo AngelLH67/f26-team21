@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMatch | Create Profile</title>
+    <link rel="stylesheet" href="/student/styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+</head>
+
+<body class="dashboard-page profile-page">
+
+    <div class="app-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <a href="index.html" class="brand">
+                <span class="brand-icon">
+                    <i data-lucide="sprout"></i>
+                </span>
+                <span>StudyMatch</span>
+            </a>
+
+            <div class="sidebar-content">
+
+                <p class="sidebar-label">WORKSPACE</p>
+
+                <nav class="sidebar-nav" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link">
+                        <i data-lucide="layout-dashboard"></i>
+                        Dashboard
+                    </a>
+
+                    <a href="manage-courses.html" class="nav-link">
+                        <i data-lucide="book-open"></i>
+                        My Courses
+                    </a>
+
+                    <a href="browse-students.html" class="nav-link">
+                        <i data-lucide="users-round"></i>
+                        Find Students
+                    </a>
+
+                    <a href="browse-groups.html" class="nav-link">
+                        <i data-lucide="messages-square"></i>
+                        Study Groups
+                    </a>
+
+                    <a href="availability.html" class="nav-link">
+                        <i data-lucide="calendar-days"></i>
+                        Availability
+                    </a>
+                </nav>
+
+                <p class="sidebar-label sidebar-label-spaced">MY ACCOUNT</p>
+
+                <nav class="sidebar-nav" aria-label="Account navigation">
+                    <a href="create-profile.html"
+                       class="nav-link active"
+                       aria-current="page">
+                        <i data-lucide="user-round-plus"></i>
+                        Create Profile
+                    </a>
+
+                    <a href="edit-profile.html" class="nav-link">
+                        <i data-lucide="user-round-pen"></i>
+                        Edit Profile
+                    </a>
+                </nav>
+
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-note">
+                    <i data-lucide="heart-handshake"></i>
+                    <p>Better together.</p>
+                    <span>Find your people and make studying easier.</span>
+                </div>
+
+                <p class="sidebar-copyright">© 2026 StudyMatch</p>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <div class="topbar">
+                <div class="breadcrumb">
+                    <span>My Account</span>
+                    <i data-lucide="chevron-right"></i>
+                    <strong>Create Profile</strong>
+                </div>
+
+                <a href="edit-profile.html" class="profile-avatar"
+                   aria-label="Edit your profile">
+                    <i data-lucide="user-round"></i>
+                </a>
+            </div>
+
+            <!-- PAGE HEADING -->
+            <section class="profile-heading">
+                <span class="eyebrow">
+                    <i data-lucide="sparkles"></i>
+                    YOUR STUDYMATCH JOURNEY
+                </span>
+
+                <h1>Let's get to know you.</h1>
+
+                <p>
+                    Tell us a little about yourself so you can connect
+                    with classmates who share your study goals.
+                </p>
+            </section>
+
+            <div class="profile-layout">
+
+                <!-- PROFILE FORM -->
+                <section class="profile-form-card">
+
+                    <div class="form-card-heading">
+                        <div class="form-heading-icon">
+                            <i data-lucide="user-round-plus"></i>
+                        </div>
+
+                        <div>
+                            <h2>Create your profile</h2>
+                            <p>A little introduction goes a long way.</p>
+                        </div>
+                    </div>
+                    
+                    <#if savedStudent??>
+                        <p role="status" style="color: #426D4B;">
+                            Profile created successfully!
+                            Student ID: ${savedStudent.id}
+                        </p>
+
+                        <a href="/student/edit-profile?id=${savedStudent.id?c}"
+                        style="color:#526654; font-weight:bold;">
+                            Edit Your Profile
+                        </a>
+                    </#if>
+
+                    <#if errorMessage??>
+                        <p role="alert" style="color: #A65A4B;">
+                            ${errorMessage}
+                        </p>
+                    </#if>
+
+                    <form id="createProfileForm"
+                          action="/student/create-profile"
+                          method="post">
+
+                        <!-- PERSONAL DETAILS -->
+                        <div class="form-section-heading">
+                            <span class="form-section-number">01</span>
+                            <div>
+                                <h3>Personal Details</h3>
+                                <p>Start with the basics.</p>
+                            </div>
+                        </div>
+
+                        <div class="profile-form-grid">
+
+                            <div class="profile-field">
+                                <label for="name">Full Name</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    required>
+                            </div>
+
+                            <div class="profile-field">
+                                <label for="email">Email Address</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Enter your email address"
+                                    autocomplete="email"
+                                    required>
+                            </div>
+
+                            <div class="profile-field">
+                                <label for="password">Password</label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Create a password"
+                                    autocomplete="new-password"
+                                    minlength="8"
+                                    required>
+                            </div>
+  
+                            <div class="profile-field">
+                                <label for="major">Major</label>
+                                <input
+                                    type="text"
+                                    id="major"
+                                    name="major"
+                                    placeholder="e.g. Computer Science"
+                                    required>
+                            </div>
+
+                            <div class="profile-field profile-field-full">
+                                <label for="year">Class Year</label>
+
+                                <select id="year" name="year" required>
+                                    <option value="" disabled selected>
+                                        Select your class year
+                                    </option>
+                                    <option value="Freshman">Freshman</option>
+                                    <option value="Sophomore">Sophomore</option>
+                                    <option value="Junior">Junior</option>
+                                    <option value="Senior">Senior</option>
+                                    <option value="Graduate Student">
+                                        Graduate Student
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- STUDY PREFERENCES -->
+                        <div class="form-section-heading preferences-heading">
+                            <span class="form-section-number">02</span>
+
+                            <div>
+                                <h3>Study Preferences</h3>
+                                <p>Help us understand how you learn best.</p>
+                            </div>
+                        </div>
+
+                        <div class="profile-form-grid">
+
+                            <div class="profile-field">
+                                <label for="studyStyle">
+                                    Preferred Study Style
+                                </label>
+
+                                <select id="studyStyle" name="studyStyle" required>
+                                    <option value="" disabled selected>
+                                        Choose your study style
+                                    </option>
+                                    <option value="Quiet / Independent">
+                                        Quiet / Independent
+                                    </option>
+                                    <option value="Collaborative">
+                                        Collaborative
+                                    </option>
+                                    <option value="Discussion Based">
+                                        Discussion Based
+                                    </option>
+                                    <option value="Practice Problems">
+                                        Practice Problems
+                                    </option>
+                                    <option value="No Preference">
+                                        No Preference
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="profile-field">
+                                <label for="groupSize">
+                                    Preferred Group Size
+                                </label>
+
+                                <select id="groupSize" name="groupSize" required>
+                                    <option value="" disabled selected>
+                                        Choose a group size
+                                    </option>
+                                    <option value="2-3 Students">
+                                        2-3 Students
+                                    </option>
+                                    <option value="4-5 Students">
+                                        4-5 Students
+                                    </option>
+                                    <option value="6+ Students">
+                                        6+ Students
+                                    </option>
+                                    <option value="No Preference">
+                                        No Preference
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="profile-field profile-field-full">
+                                <label for="bio">About Me</label>
+
+                                <textarea
+                                    id="bio"
+                                    name="bio"
+                                    rows="5"
+                                    placeholder="Share a little about yourself, your favorite ways to study, or what you're looking for in a study partner."
+                                ></textarea>
+
+                                <span class="field-hint">
+                                    Keep it friendly and authentic.
+                                </span>
+                            </div>
+
+                            <div class="profile-field profile-field-full">
+                                <label for="availability">Study Availability</label>
+                                <textarea
+                                    id="availability"
+                                    name="availability"
+                                    rows="3"
+                                    placeholder="e.g. Monday and Wednesday evenings, weekends"
+                                ></textarea>
+                            </div>
+
+                        </div>
+
+                        <!-- ACTIONS -->
+                        <div class="profile-form-actions">
+                            <a href="index.html" class="profile-cancel">
+                                Cancel
+                            </a>
+
+                            <button type="submit" class="profile-save">
+                                <i data-lucide="check"></i>
+                                Save Profile
+                            </button>
+                        </div>
+
+                        <p id="formMessage" role="status" aria-live="polite"></p>
+
+                    </form>
+
+                </section>
+
+                <!-- PROFILE TIPS -->
+                <aside class="profile-tips">
+
+                    <div class="tips-icon">
+                        <i data-lucide="heart-handshake"></i>
+                    </div>
+
+                    <span class="tips-label">A LITTLE REMINDER</span>
+
+                    <h2>Good connections start here.</h2>
+
+                    <p>
+                        Your StudyMatch profile helps other students
+                        get to know you and understand how you like
+                        to learn.
+                    </p>
+
+                    <div class="tips-divider"></div>
+
+                    <div class="tip-item">
+                        <i data-lucide="check-circle-2"></i>
+                        <span>Be yourself and share your interests.</span>
+                    </div>
+
+                    <div class="tip-item">
+                        <i data-lucide="check-circle-2"></i>
+                        <span>Choose the study style that suits you.</span>
+                    </div>
+
+                    <div class="tip-item">
+                        <i data-lucide="check-circle-2"></i>
+                        <span>Find classmates who help you grow.</span>
+                    </div>
+
+                    <div class="tips-decoration" aria-hidden="true">
+                        <i data-lucide="sprout"></i>
+                    </div>
+
+                </aside>
+
+            </div>
+
+            <footer class="dashboard-footer">
+                <span>Made for students, by students.</span>
+                <span>StudyMatch © 2026</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    });
+</script>

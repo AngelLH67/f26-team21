@@ -157,6 +157,29 @@
                             </div>
 
                             <div class="profile-field">
+                                <label for="email">Email Address</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Enter your email address"
+                                    autocomplete="email"
+                                    required>
+                            </div>
+
+                            <div class="profile-field">
+                                <label for="password">Password</label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Create a password"
+                                    autocomplete="new-password"
+                                    minlength="8"
+                                    required>
+                            </div>
+  
+                            <div class="profile-field">
                                 <label for="major">Major</label>
                                 <input
                                     type="text"
@@ -263,6 +286,16 @@
                                 </span>
                             </div>
 
+                            <div class="profile-field profile-field-full">
+                                <label for="availability">Study Availability</label>
+                                <textarea
+                                    id="availability"
+                                    name="availability"
+                                    rows="3"
+                                    placeholder="e.g. Monday and Wednesday evenings, weekends"
+                                ></textarea>
+                            </div>
+
                         </div>
 
                         <!-- ACTIONS -->
@@ -276,6 +309,8 @@
                                 Save Profile
                             </button>
                         </div>
+
+                        <p id="formMessage" role="status" aria-live="polite"></p>
 
                     </form>
 
@@ -332,29 +367,87 @@
 
     </div>
 
-    <script>
-        window.addEventListener("DOMContentLoaded", function () {
+    
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        if (window.lucide) {
+            lucide.createIcons();
+        }
 
-            if (window.lucide) {
-                lucide.createIcons();
-            }
+        const form = document.getElementById("createProfileForm");
+        const message = document.getElementById("formMessage");
+        const button = form.querySelector('button[type="submit"]');
 
-            const form = document.getElementById("createProfileForm");
+        form.addEventListener("submit", async function (event) {
+            event.preventDefault();
 
-            form.addEventListener("submit", function (event) {
-                event.preventDefault();
+            if (!form.reportValidity()) return;
 
-                if (!form.reportValidity()) {
-                    return;
+            const student = {
+                name: document.getElementById("name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                password: document.getElementById("password").value,
+                major: document.getElementById("major").value.trim(),
+                classYear: document.getElementById("year").value,
+                studyPreferences: document.getElementById("studyStyle").value,
+                preferredGroupSize: document.getElementById("groupSize").value,
+                bio: document.getElementById("bio").value.trim(),
+                availability: document.getElementById("availability").value.trim()
+            };
+
+            message.textContent = "Creating your profile...";
+            message.style.color = "#526654";
+            button.disabled = true;
+
+            try {
+                const response = await fetch("/api/students", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(student)
+                });
+
+                if (!response.ok) {
+                    if (response.status === 400) {
+                        throw new Error(
+                            "Please check your information and try again."
+                        );
+                    }
+                    if (response.status === 409) {
+                        throw new Error(
+                            "This email address is already registered."
+                        );
+                    }
+                    throw new Error("Unable to create your profile.");
                 }
 
-                // Prototype behavior:
-                // Does not save data to the backend yet.
-                alert("Profile successfully created!");
-                window.location.href = "index.html";
-            });
-        });
-    </script>
+                const savedStudent = await response.json();
 
-</body>
-</html>
+                if (savedStudent.id == null) {
+                    throw new Error(
+                        "The server did not return a student ID."
+                    );
+                }
+
+                sessionStorage.setItem(
+                    "studyMatchStudentId",
+                    String(savedStudent.id)
+                );
+
+                message.textContent = "Profile created successfully!";
+                message.style.color = "#426D4B";
+
+                window.location.href =
+                    "edit-profile.html?id=" +
+                    encodeURIComponent(savedStudent.id);
+
+            } catch (error) {
+                message.textContent = error.message;
+                message.style.color = "#A65A4B";
+            } finally {
+                button.disabled = false;
+            }
+        });
+    });
+</script>
