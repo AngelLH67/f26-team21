@@ -1,114 +1,294 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyMatch - Student Dashboard</title>
+    <title>StudyMatch | Student Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 </head>
 
-<body>
+<body class="dashboard-page">
 
-    <header>
-        <h1>StudyMatch</h1>
-        <nav>
-            <a href="index.html">Dashboard</a>
-        </nav>
-    </header>
+    <div class="app-layout">
 
-    <main>
-        <h2>Student Dashboard</h2>
-        <p>Manage your profile, courses, study groups, and availability.</p>
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
 
-        <div class="dashboard">
+            <a href="index.html" class="brand">
+                <span class="brand-icon">
+                    <i data-lucide="sprout"></i>
+                </span>
+                <span>StudyMatch</span>
+            </a>
 
-            <div class="card">
-                <h3>Create Profile</h3>
-                <p>
-                    Create your student profile and add your study
-                    preferences for other students to view.
-                </p>
-                <a class="button" href="create-profile.html">
-                    Create Profile
+            <div class="sidebar-content">
+
+                <p class="sidebar-label">WORKSPACE</p>
+
+                <nav class="sidebar-nav" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link active" aria-current="page">
+                        <i data-lucide="layout-dashboard"></i>
+                        Dashboard
+                    </a>
+
+                    <a href="manage-courses.html" class="nav-link">
+                        <i data-lucide="book-open"></i>
+                        My Courses
+                    </a>
+
+                    <a href="browse-students.html" class="nav-link">
+                        <i data-lucide="users-round"></i>
+                        Find Students
+                    </a>
+
+                    <a href="browse-groups.html" class="nav-link">
+                        <i data-lucide="messages-square"></i>
+                        Study Groups
+                    </a>
+
+                    <a href="availability.html" class="nav-link">
+                        <i data-lucide="calendar-days"></i>
+                        Availability
+                    </a>
+                </nav>
+
+                <p class="sidebar-label sidebar-label-spaced">MY ACCOUNT</p>
+
+                <nav class="sidebar-nav" aria-label="Account navigation">
+                    <a href="create-profile.html" class="nav-link">
+                        <i data-lucide="user-round-plus"></i>
+                        Create Profile
+                    </a>
+
+                    <a href="edit-profile.html" class="nav-link">
+                        <i data-lucide="user-round-pen"></i>
+                        Edit Profile
+                    </a>
+                </nav>
+
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-note">
+                    <i data-lucide="heart-handshake"></i>
+                    <p>Better together.</p>
+                    <span>Find your people and make studying easier.</span>
+                </div>
+                <p class="sidebar-copyright">© 2026 StudyMatch</p>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <div class="topbar">
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <i data-lucide="chevron-right"></i>
+                    <strong>Dashboard</strong>
+                </div>
+
+                <a href="edit-profile.html" class="profile-avatar"
+                   aria-label="Edit your profile">
+                    <i data-lucide="user-round"></i>
                 </a>
             </div>
 
-            <div class="card">
-                <h3>Edit Profile</h3>
+            <!-- WELCOME -->
+            <section class="welcome-section">
+                <span class="eyebrow">
+                    <i data-lucide="sparkles"></i>
+                    YOUR STUDY SPACE
+                </span>
+
+                <h1>Ready to study smarter?</h1>
                 <p>
-                    Update your profile information and study
-                    preferences.
+                    Find your people, stay organized, and make
+                    progress together. Your study journey starts here.
                 </p>
-                <a class="button" href="edit-profile.html">
-                    Edit Profile
-                </a>
-            </div>
+            </section>
 
-            <div class="card">
-                <h3>Add Courses</h3>
-                <p>
-                    Add the courses you are currently taking to your
-                    StudyMatch profile.
-                </p>
-                <a class="button" href="add-courses.html">
-                    Add Courses
-                </a>
-            </div>
+            <!-- FEATURED ACTION -->
+            <section class="featured-card">
+                <div class="featured-content">
 
-            <div class="card">
-                <h3>Browse Students</h3>
-                <p>
-                    View other students who are enrolled in the same
-                    courses as you.
-                </p>
-                <a class="button" href="browse-students.html">
-                    Browse Students
-                </a>
-            </div>
+                    <span class="featured-tag">
+                        <i data-lucide="sparkles"></i>
+                        BETTER TOGETHER
+                    </span>
 
-            <div class="card">
-                <h3>Browse Study Groups</h3>
-                <p>
-                    View study groups available for the courses
-                    you are currently taking.
-                </p>
-                <a class="button" href="browse-groups.html">
-                    Browse Groups
-                </a>
-            </div>
+                    <h2>Find your study circle.</h2>
 
-            <div class="card">
-                <h3>Create Study Group</h3>
-                <p>
-                    Create a new study group and organize a study
-                    session with classmates.
-                </p>
-                <a class="button" href="create-group.html">
-                    Create Group
-                </a>
-            </div>
+                    <p>
+                        Meet students taking the same classes,
+                        share ideas, and find people who make
+                        learning a little easier.
+                    </p>
 
-            <div class="card">
-                <h3>Enter Availability</h3>
-                <p>
-                    Add your available study times and view study
-                    sessions that fit your schedule.
-                </p>
-                <a class="button" href="availability.html">
-                    Set Availability
-                </a>
-            </div>
+                    <a href="browse-students.html"
+                       class="button featured-button">
+                        Explore Students
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
 
-        </div>
-    </main>
+                </div>
 
-    <footer>
-        <p>StudyMatch &copy; 2026</p>
-    </footer>
+                <div class="featured-art" aria-hidden="true">
+                    <div class="art-circle art-circle-one"></div>
+                    <div class="art-circle art-circle-two"></div>
+
+                    <div class="art-center">
+                        <i data-lucide="users-round"></i>
+                    </div>
+
+                    <div class="art-sparkle art-sparkle-one">
+                        <i data-lucide="sparkles"></i>
+                    </div>
+
+                    <div class="art-sparkle art-sparkle-two">
+                        <i data-lucide="star"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WORKSPACE -->
+            <section class="workspace-section">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-kicker">THE ESSENTIALS</span>
+                        <h2>Your workspace</h2>
+                        <p>Everything you need, all in one place.</p>
+                    </div>
+                </div>
+
+                <div class="workspace-grid">
+
+                    <a href="manage-courses.html" class="workspace-card">
+                        <span class="card-icon">
+                            <i data-lucide="book-open"></i>
+                        </span>
+
+                        <span class="card-text">
+                            <strong>My Courses</strong>
+                            <span>Add and manage your classes.</span>
+                        </span>
+
+                        <i data-lucide="arrow-up-right" class="card-arrow"></i>
+                    </a>
+
+                    <a href="browse-groups.html" class="workspace-card">
+                        <span class="card-icon">
+                            <i data-lucide="users-round"></i>
+                        </span>
+
+                        <span class="card-text">
+                            <strong>Study Groups</strong>
+                            <span>Discover groups for your courses.</span>
+                        </span>
+
+                        <i data-lucide="arrow-up-right" class="card-arrow"></i>
+                    </a>
+
+                    <a href="availability.html" class="workspace-card">
+                        <span class="card-icon">
+                            <i data-lucide="calendar-clock"></i>
+                        </span>
+
+                        <span class="card-text">
+                            <strong>My Availability</strong>
+                            <span>Set the times you're free to study.</span>
+                        </span>
+
+                        <i data-lucide="arrow-up-right" class="card-arrow"></i>
+                    </a>
+
+                    <a href="edit-profile.html" class="workspace-card">
+                        <span class="card-icon">
+                            <i data-lucide="user-round"></i>
+                        </span>
+
+                        <span class="card-text">
+                            <strong>My Profile</strong>
+                            <span>Update your student information.</span>
+                        </span>
+
+                        <i data-lucide="arrow-up-right" class="card-arrow"></i>
+                    </a>
+
+                </div>
+
+            </section>
+
+            <!-- GET STARTED / QUICK ACTIONS -->
+            <section class="quick-section">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-kicker">MAKE IT HAPPEN</span>
+                        <h2>Quick actions</h2>
+                        <p>A few more ways to get connected.</p>
+                    </div>
+                </div>
+
+                <div class="quick-grid">
+
+                    <a href="create-profile.html" class="quick-card">
+                        <span class="quick-icon">
+                            <i data-lucide="user-round-plus"></i>
+                        </span>
+                        <span>
+                            <strong>Create Profile</strong>
+                            <small>Introduce yourself</small>
+                        </span>
+                        <i data-lucide="arrow-right" class="quick-arrow"></i>
+                    </a>
+
+                    <a href="create-group.html" class="quick-card">
+                        <span class="quick-icon">
+                            <i data-lucide="users-round"></i>
+                        </span>
+                        <span>
+                            <strong>Create a Group</strong>
+                            <small>Bring classmates together</small>
+                        </span>
+                        <i data-lucide="arrow-right" class="quick-arrow"></i>
+                    </a>
+
+                    <a href="browse-students.html" class="quick-card">
+                        <span class="quick-icon">
+                            <i data-lucide="search"></i>
+                        </span>
+                        <span>
+                            <strong>Browse Students</strong>
+                            <small>Find your study partners</small>
+                        </span>
+                        <i data-lucide="arrow-right" class="quick-arrow"></i>
+                    </a>
+
+                </div>
+            </section>
+
+            <footer class="dashboard-footer">
+                <span>Made for students, by students.</span>
+                <span>StudyMatch © 2026</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    </script>
 
 </body>
-
 </html>
-```

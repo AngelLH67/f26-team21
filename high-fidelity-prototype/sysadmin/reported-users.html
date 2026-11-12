@@ -1,61 +1,570 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyMatch - Reported Users</title>
+    <title>StudyMatch | Reported Users</title>
+
+    <link rel="stylesheet" href="../student/styles.css">
     <link rel="stylesheet" href="styles.css">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 </head>
 
-<body>
+<body class="dashboard-page admin-page moderation-page reports-page">
 
-    <header>
-        <h1>StudyMatch</h1>
-        <nav> <a href="index.html">Dashboard</a> </nav>
-    </header>
-    <main>
-        <h2>Review Reported Users</h2>
-        <p>Review reports submitted about StudyMatch users.</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Reported User</th>
-                    <th>Reported By</th>
-                    <th>Reason</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="reportTable">
-                <tr>
-                    <td>Taylor Brown</td>
-                    <td>Alex Johnson</td>
-                    <td>Inappropriate behavior</td>
-                    <td>Pending</td>
-                    <td> <button class="action-button"> Review </button> </td>
-                </tr>
+    <div class="app-layout">
 
-                <tr>
-                    <td>Joey Thompson</td>
-                    <td>Sam Davis</td>
-                    <td>Vulgar language</td>
-                    <td>Pending</td>
-                    <td> <button class="action-button"> Review </button> </td>
-                </tr>
+        <!-- ADMIN SIDEBAR -->
+        <aside class="sidebar">
+            <a href="index.html" class="brand">
+                <span class="brand-icon">
+                    <i data-lucide="sprout"></i>
+                </span>
+                <span>StudyMatch</span>
+            </a>
 
-                <tr>
-                    <td>Sara Beltran</td>
-                    <td>Trey Harris</td>
-                    <td>Spam</td>
-                    <td>Viewed</td>
-                    <td> <button class="action-button"> Review </button> </td>
-                </tr>
+            <div class="sidebar-content">
+                <p class="sidebar-label">ADMIN WORKSPACE</p>
 
-            </tbody>
-        </table> <a class="back-button" href="index.html"> Back to Dashboard </a>
-    </main>
+                <nav class="sidebar-nav" aria-label="Admin navigation">
+
+                    <a href="index.html" class="nav-link">
+                        <i data-lucide="layout-dashboard"></i>
+                        Overview
+                    </a>
+
+                    <a href="registered-users.html" class="nav-link">
+                        <i data-lucide="users-round"></i>
+                        Registered Users
+                    </a>
+
+                    <a href="manage-courses.html" class="nav-link">
+                        <i data-lucide="book-open"></i>
+                        Course Listings
+                    </a>
+
+                    <a href="remove-groups.html" class="nav-link">
+                        <i data-lucide="messages-square"></i>
+                        Study Groups
+                    </a>
+
+                    <a href="reported-users.html"
+                       class="nav-link active"
+                       aria-current="page">
+                        <i data-lucide="shield-alert"></i>
+                        Reported Users
+                    </a>
+
+                </nav>
+
+                <p class="sidebar-label sidebar-label-spaced">
+                    QUICK ACTIONS
+                </p>
+
+                <nav class="sidebar-nav" aria-label="Quick actions">
+                    <a href="add-courses.html" class="nav-link">
+                        <i data-lucide="plus-circle"></i>
+                        Add Course
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-note">
+                    <i data-lucide="shield-check"></i>
+                    <p>Keeping StudyMatch safe.</p>
+                    <span>
+                        Support a welcoming and productive
+                        study community.
+                    </span>
+                </div>
+
+                <p class="sidebar-copyright">© 2026 StudyMatch</p>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <div class="topbar">
+                <div class="breadcrumb">
+                    <span>Administration</span>
+                    <i data-lucide="chevron-right"></i>
+                    <strong>Reported Users</strong>
+                </div>
+
+                <span class="admin-account-icon"
+                      aria-label="Administrator">
+                    <i data-lucide="shield-check"></i>
+                </span>
+            </div>
+
+            <!-- PAGE INTRODUCTION -->
+            <section class="moderation-heading">
+                <span class="eyebrow">
+                    <i data-lucide="sparkles"></i>
+                    COMMUNITY REPORTS
+                </span>
+
+                <h1>A safer space to study.</h1>
+
+                <p>
+                    Review reports submitted by StudyMatch students
+                    and keep track of concerns that need attention.
+                </p>
+            </section>
+
+            <!-- OVERVIEW BANNER -->
+            <section class="moderation-overview">
+
+                <div class="moderation-overview-icon">
+                    <i data-lucide="shield-alert"></i>
+                </div>
+
+                <div class="moderation-overview-copy">
+                    <span>COMMUNITY SAFETY</span>
+
+                    <h2>Every concern deserves attention.</h2>
+
+                    <p>
+                        Review submitted reports carefully to help
+                        keep StudyMatch welcoming and respectful.
+                    </p>
+                </div>
+
+                <div class="moderation-stat">
+                    <strong id="pendingTotal">2</strong>
+                    <span>Pending reports</span>
+                </div>
+
+            </section>
+
+            <!-- SEARCH AND FILTERS -->
+            <section class="moderation-tools">
+
+                <div class="moderation-tools-heading">
+                    <span class="moderation-tools-icon">
+                        <i data-lucide="clipboard-list"></i>
+                    </span>
+
+                    <div>
+                        <h2>Report management</h2>
+                        <p>Find and review submitted reports.</p>
+                    </div>
+                </div>
+
+                <div class="moderation-filters">
+
+                    <div class="moderation-field">
+                        <label for="reportSearch">Search reports</label>
+
+                        <div class="moderation-search-wrap">
+                            <i data-lucide="search"></i>
+
+                            <input
+                                type="search"
+                                id="reportSearch"
+                                placeholder="Search users, reporters, or reasons...">
+                        </div>
+                    </div>
+
+                    <div class="moderation-field">
+                        <label for="reportStatus">Filter by status</label>
+
+                        <select id="reportStatus">
+                            <option value="all">All Reports</option>
+                            <option value="pending">Pending</option>
+                            <option value="viewed">Viewed</option>
+                        </select>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- REPORTS DIRECTORY -->
+            <section class="moderation-results">
+
+                <div class="moderation-results-heading">
+                    <div>
+                        <span class="section-kicker">
+                            REPORT DIRECTORY
+                        </span>
+
+                        <h2>Submitted reports</h2>
+
+                        <p>
+                            View report details and track review status.
+                        </p>
+                    </div>
+
+                    <span class="moderation-count"
+                          id="reportCount"
+                          aria-live="polite">
+                        3 reports
+                    </span>
+                </div>
+
+                <div class="moderation-table-card">
+
+                    <div class="moderation-table-scroll">
+
+                        <table class="moderation-table">
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">Reported User</th>
+                                    <th scope="col">Reported By</th>
+                                    <th scope="col">Reason</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="reportTable">
+                                <!-- Generated by JavaScript -->
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <div class="moderation-empty" id="noReports" hidden>
+
+                        <div class="moderation-empty-icon">
+                            <i data-lucide="search-x"></i>
+                        </div>
+
+                        <h3>No reports found</h3>
+
+                        <p>
+                            Try a different search or status filter.
+                        </p>
+
+                        <button type="button" id="clearReportFilters">
+                            Clear Filters
+                        </button>
+                    </div>
+
+                    <div class="moderation-table-footer">
+                        <span>Sample records · Frontend prototype</span>
+                        <span id="reportTableFooter">
+                            Showing 3 of 3 reports
+                        </span>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- INFORMATION BANNER -->
+            <section class="reports-info-banner">
+
+                <div class="reports-info-icon">
+                    <i data-lucide="info"></i>
+                </div>
+
+                <div>
+                    <h2>Review thoughtfully.</h2>
+                    <p>
+                        Reports are concerns submitted by users,
+                        not proof of misconduct. Marking a report
+                        as Viewed does not take disciplinary action.
+                    </p>
+                </div>
+
+            </section>
+
+            <footer class="dashboard-footer">
+                <span>Supporting students, one connection at a time.</span>
+                <span>StudyMatch © 2026</span>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- REPORT REVIEW DIALOG -->
+    <dialog id="reviewDialog" class="moderation-dialog reports-dialog"
+            aria-labelledby="reviewDialogTitle">
+
+        <div class="moderation-dialog-icon">
+            <i data-lucide="clipboard-check"></i>
+        </div>
+
+        <span class="moderation-dialog-label">
+            REPORT REVIEW
+        </span>
+
+        <h2 id="reviewDialogTitle">Report details</h2>
+
+        <dl class="report-details">
+            <div>
+                <dt>Reported User</dt>
+                <dd id="detailUser"></dd>
+            </div>
+
+            <div>
+                <dt>Reported By</dt>
+                <dd id="detailReporter"></dd>
+            </div>
+
+            <div>
+                <dt>Reason</dt>
+                <dd id="detailReason"></dd>
+            </div>
+
+            <div>
+                <dt>Current Status</dt>
+                <dd id="detailStatus"></dd>
+            </div>
+        </dl>
+
+        <p class="moderation-dialog-note">
+            This prototype tracks whether the report has been viewed.
+            It does not determine whether a violation occurred.
+        </p>
+
+        <div class="moderation-dialog-actions">
+
+            <button type="button" class="moderation-cancel"
+                    id="closeReview">
+                Close
+            </button>
+
+            <button type="button" class="report-mark-viewed"
+                    id="markViewed">
+                Mark as Viewed
+            </button>
+
+        </div>
+    </dialog>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            // Original example reports.
+            // Changes exist only until the page refreshes.
+            const reports = [
+                {
+                    id: 1,
+                    user: "Taylor Brown",
+                    reporter: "Alex Johnson",
+                    reason: "Inappropriate behavior",
+                    status: "pending"
+                },
+                {
+                    id: 2,
+                    user: "Joey Thompson",
+                    reporter: "Sam Davis",
+                    reason: "Vulgar language",
+                    status: "pending"
+                },
+                {
+                    id: 3,
+                    user: "Sara Beltran",
+                    reporter: "Trey Harris",
+                    reason: "Spam",
+                    status: "viewed"
+                }
+            ];
+
+            const table = document.getElementById("reportTable");
+            const search = document.getElementById("reportSearch");
+            const filter = document.getElementById("reportStatus");
+            const count = document.getElementById("reportCount");
+            const pendingTotal = document.getElementById("pendingTotal");
+            const footer = document.getElementById("reportTableFooter");
+            const empty = document.getElementById("noReports");
+
+            const dialog = document.getElementById("reviewDialog");
+            const markViewed = document.getElementById("markViewed");
+
+            let selectedReportId = null;
+
+            function createElement(tag, className, content) {
+                const element = document.createElement(tag);
+
+                if (className) {
+                    element.className = className;
+                }
+
+                if (content !== undefined) {
+                    element.textContent = content;
+                }
+
+                return element;
+            }
+
+            function renderReports() {
+                const query = search.value.trim().toLowerCase();
+                const selectedStatus = filter.value;
+
+                const matching = reports.filter(function (report) {
+                    const searchable = [
+                        report.user,
+                        report.reporter,
+                        report.reason
+                    ].join(" ").toLowerCase();
+
+                    return searchable.includes(query) &&
+                        (selectedStatus === "all" ||
+                         report.status === selectedStatus);
+                });
+
+                table.replaceChildren();
+
+                matching.forEach(function (report) {
+
+                    const row = document.createElement("tr");
+
+                    const userCell = document.createElement("td");
+                    const identity = createElement(
+                        "div", "moderation-group-identity"
+                    );
+
+                    const avatar = createElement(
+                        "span", "moderation-group-avatar"
+                    );
+
+                    avatar.textContent = report.user
+                        .split(" ")
+                        .map(part => part.charAt(0))
+                        .join("")
+                        .slice(0, 2);
+
+                    const name = createElement(
+                        "strong", "", report.user
+                    );
+
+                    identity.append(avatar, name);
+                    userCell.appendChild(identity);
+
+                    const reporterCell = createElement(
+                        "td", "moderation-creator", report.reporter
+                    );
+
+                    const reasonCell = createElement(
+                        "td", "report-reason", report.reason
+                    );
+
+                    const statusCell = document.createElement("td");
+                    const statusBadge = createElement(
+                        "span",
+                        "moderation-status " + report.status,
+                        report.status === "pending" ? "Pending" : "Viewed"
+                    );
+                    statusCell.appendChild(statusBadge);
+
+                    const actionCell = document.createElement("td");
+                    const reviewButton = createElement(
+                        "button", "report-review-button", "Review"
+                    );
+
+                    reviewButton.type = "button";
+                    reviewButton.addEventListener("click", function () {
+                        openReview(report.id);
+                    });
+
+                    actionCell.appendChild(reviewButton);
+
+                    row.append(
+                        userCell,
+                        reporterCell,
+                        reasonCell,
+                        statusCell,
+                        actionCell
+                    );
+
+                    table.appendChild(row);
+                });
+
+                const pending = reports.filter(function (report) {
+                    return report.status === "pending";
+                }).length;
+
+                pendingTotal.textContent = pending;
+
+                count.textContent =
+                    matching.length +
+                    (matching.length === 1 ? " report" : " reports");
+
+                footer.textContent =
+                    "Showing " + matching.length +
+                    " of " + reports.length + " reports";
+
+                empty.hidden = matching.length !== 0;
+            }
+
+            function openReview(id) {
+                const report = reports.find(function (item) {
+                    return item.id === id;
+                });
+
+                if (!report) {
+                    return;
+                }
+
+                selectedReportId = id;
+
+                document.getElementById("detailUser")
+                    .textContent = report.user;
+
+                document.getElementById("detailReporter")
+                    .textContent = report.reporter;
+
+                document.getElementById("detailReason")
+                    .textContent = report.reason;
+
+                document.getElementById("detailStatus")
+                    .textContent =
+                        report.status === "pending" ? "Pending" : "Viewed";
+
+                markViewed.hidden = report.status === "viewed";
+
+                dialog.showModal();
+            }
+
+            markViewed.addEventListener("click", function () {
+
+                const report = reports.find(function (item) {
+                    return item.id === selectedReportId;
+                });
+
+                if (report) {
+                    report.status = "viewed";
+                }
+
+                dialog.close();
+                renderReports();
+            });
+
+            document.getElementById("closeReview")
+                .addEventListener("click", function () {
+                    dialog.close();
+                });
+
+            dialog.addEventListener("close", function () {
+                selectedReportId = null;
+            });
+
+            search.addEventListener("input", renderReports);
+            filter.addEventListener("change", renderReports);
+
+            document.getElementById("clearReportFilters")
+                .addEventListener("click", function () {
+                    search.value = "";
+                    filter.value = "all";
+                    renderReports();
+                    search.focus();
+                });
+
+            renderReports();
+        });
+    </script>
 
 </body>
-
 </html>

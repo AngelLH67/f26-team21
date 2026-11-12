@@ -1,76 +1,288 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyMatch - SysAdmin Dashboard</title>
+    <title>StudyMatch | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../student/styles.css">
     <link rel="stylesheet" href="styles.css">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 </head>
 
-<body>
+<body class="dashboard-page admin-page">
 
-    <header>
-        <h1>StudyMatch</h1>
-        <nav>
-            <a href="index.html">Dashboard</a>
-        </nav>
-    </header>
+    <div class="app-layout">
 
-    <main>
-        <h2>SysAdmin Dashboard</h2>
-        <p>Manage StudyMatch users, groups, and course listings.</p>
+        <!-- ADMIN SIDEBAR -->
+        <aside class="sidebar">
 
-        <div class="dashboard">
+            <a href="index.html" class="brand">
+                <span class="brand-icon">
+                    <i data-lucide="sprout"></i>
+                </span>
+                <span>StudyMatch</span>
+            </a>
 
-            <div class="card">
-                <h3>Remove Inappropriate Groups</h3>
-                <p>
-                    Review and remove groups that contain inappropriate
-                    or prohibited content.
+            <div class="sidebar-content">
+
+                <p class="sidebar-label">ADMIN WORKSPACE</p>
+
+                <nav class="sidebar-nav" aria-label="Admin navigation">
+
+                    <a href="index.html"
+                       class="nav-link active"
+                       aria-current="page">
+                        <i data-lucide="layout-dashboard"></i>
+                        Overview
+                    </a>
+
+                    <a href="registered-users.html" class="nav-link">
+                        <i data-lucide="users-round"></i>
+                        Registered Users
+                    </a>
+
+                    <a href="manage-courses.html" class="nav-link">
+                        <i data-lucide="book-open"></i>
+                        Course Listings
+                    </a>
+
+                    <a href="remove-groups.html" class="nav-link">
+                        <i data-lucide="messages-square"></i>
+                        Study Groups
+                    </a>
+
+                    <a href="reported-users.html" class="nav-link">
+                        <i data-lucide="shield-alert"></i>
+                        Reported Users
+                    </a>
+
+                </nav>
+
+                <p class="sidebar-label sidebar-label-spaced">
+                    QUICK ACTIONS
                 </p>
-                <a class="button" href="remove-groups.html">
-                    View Groups
-                </a>
+
+                <nav class="sidebar-nav" aria-label="Quick actions">
+                    <a href="add-courses.html" class="nav-link">
+                        <i data-lucide="plus-circle"></i>
+                        Add Course
+                    </a>
+                </nav>
+
             </div>
 
-            <div class="card">
-                <h3>Manage Course Listings</h3>
-                <p>
-                    Add, edit, and remove courses available on StudyMatch.
-                </p>
-                <a class="button" href="manage-courses.html">
-                    Manage Courses
-                </a>
+            <div class="sidebar-bottom">
+                <div class="sidebar-note">
+                    <i data-lucide="shield-check"></i>
+                    <p>Keeping StudyMatch safe.</p>
+                    <span>
+                        Support a welcoming and productive
+                        study community.
+                    </span>
+                </div>
+                <p class="sidebar-copyright">© 2026 StudyMatch</p>
             </div>
 
-            <div class="card">
-                <h3>View Registered Users</h3>
-                <p>
-                    View users who are currently registered on StudyMatch.
-                </p>
-                <a class="button" href="registered-users.html">
-                    View Users
-                </a>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <div class="topbar">
+                <div class="breadcrumb">
+                    <span>Administration</span>
+                    <i data-lucide="chevron-right"></i>
+                    <strong>Overview</strong>
+                </div>
+
+                <span class="admin-account-icon" aria-label="Administrator">
+                    <i data-lucide="shield-check"></i>
+                </span>
             </div>
 
-            <div class="card">
-                <h3>Review Reported Users</h3>
+            <!-- WELCOME -->
+            <section class="admin-welcome">
+                <span class="eyebrow">
+                    <i data-lucide="sparkles"></i>
+                    ADMIN DASHBOARD
+                </span>
+
+                <h1>Your workspace, at a glance.</h1>
+
                 <p>
-                    Review reports submitted about StudyMatch users.
+                    Everything you need to keep StudyMatch
+                    organized, welcoming, and running smoothly.
                 </p>
-                <a class="button" href="reported-users.html">
-                    Review Reports
+            </section>
+
+            <!-- FEATURED PANEL -->
+            <section class="admin-hero">
+                <div class="admin-hero-content">
+
+                    <span class="admin-hero-label">
+                        <i data-lucide="heart-handshake"></i>
+                        COMMUNITY FIRST
+                    </span>
+
+                    <h2>Help your study community thrive.</h2>
+
+                    <p>
+                        Manage course listings, support registered
+                        students, and review reports to maintain
+                        a positive learning environment.
+                    </p>
+
+                    <a href="reported-users.html" class="admin-hero-button">
+                        Review Reports
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+
+                </div>
+
+                <div class="admin-hero-art" aria-hidden="true">
+                    <div class="admin-art-circle">
+                        <div class="admin-art-center">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MANAGEMENT OVERVIEW -->
+            <section class="admin-management-section">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-kicker">ADMIN ESSENTIALS</span>
+                        <h2>Community management</h2>
+                        <p>Choose an area of StudyMatch to manage.</p>
+                    </div>
+                </div>
+
+                <div class="admin-management-grid">
+
+                    <a href="registered-users.html" class="admin-management-card">
+                        <span class="admin-card-icon">
+                            <i data-lucide="users-round"></i>
+                        </span>
+
+                        <span class="admin-card-text">
+                            <strong>Registered Users</strong>
+                            <span>
+                                View students registered on StudyMatch
+                                and their account information.
+                            </span>
+                        </span>
+
+                        <span class="admin-card-action">
+                            View Users
+                            <i data-lucide="arrow-up-right"></i>
+                        </span>
+                    </a>
+
+                    <a href="manage-courses.html" class="admin-management-card">
+                        <span class="admin-card-icon">
+                            <i data-lucide="book-open"></i>
+                        </span>
+
+                        <span class="admin-card-text">
+                            <strong>Course Listings</strong>
+                            <span>
+                                Add, edit, and remove courses
+                                available to students.
+                            </span>
+                        </span>
+
+                        <span class="admin-card-action">
+                            Manage Courses
+                            <i data-lucide="arrow-up-right"></i>
+                        </span>
+                    </a>
+
+                    <a href="remove-groups.html" class="admin-management-card">
+                        <span class="admin-card-icon">
+                            <i data-lucide="messages-square"></i>
+                        </span>
+
+                        <span class="admin-card-text">
+                            <strong>Study Groups</strong>
+                            <span>
+                                Review group listings and remove
+                                inappropriate content when necessary.
+                            </span>
+                        </span>
+
+                        <span class="admin-card-action">
+                            Manage Groups
+                            <i data-lucide="arrow-up-right"></i>
+                        </span>
+                    </a>
+
+                    <a href="reported-users.html" class="admin-management-card">
+                        <span class="admin-card-icon">
+                            <i data-lucide="flag"></i>
+                        </span>
+
+                        <span class="admin-card-text">
+                            <strong>Reported Users</strong>
+                            <span>
+                                Review submitted reports and
+                                help keep the community safe.
+                            </span>
+                        </span>
+
+                        <span class="admin-card-action">
+                            Review Reports
+                            <i data-lucide="arrow-up-right"></i>
+                        </span>
+                    </a>
+
+                </div>
+
+            </section>
+
+            <!-- QUICK ACTION BANNER -->
+            <section class="admin-bottom-banner">
+
+                <span class="admin-bottom-icon">
+                    <i data-lucide="plus-circle"></i>
+                </span>
+
+                <div>
+                    <h2>Need to add a new course?</h2>
+                    <p>
+                        Keep the course catalog up to date
+                        for the StudyMatch community.
+                    </p>
+                </div>
+
+                <a href="add-courses.html" class="admin-bottom-link">
+                    Add Course
+                    <i data-lucide="arrow-up-right"></i>
                 </a>
-            </div>
 
-        </div>
-    </main>
+            </section>
 
-    <footer>
-        <p>StudyMatch &copy; 2026</p>
-    </footer>
+            <footer class="dashboard-footer">
+                <span>Supporting students, one connection at a time.</span>
+                <span>StudyMatch © 2026</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    </script>
 
 </body>
-
 </html>

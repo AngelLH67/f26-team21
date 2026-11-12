@@ -1,124 +1,556 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyMatch - Browse Students</title>
+    <title>StudyMatch | Find Students</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 </head>
 
-<body>
+<body class="dashboard-page students-page">
 
-    <header>
-        <h1>StudyMatch</h1>
-        <nav>
-            <a href="index.html">Dashboard</a>
-        </nav>
-    </header>
+    <div class="app-layout">
 
-    <main>
-        <h2>Browse Students</h2>
-        <p>Find other students who are enrolled in your courses.</p>
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
 
-        <div class="form-container">
+            <a href="index.html" class="brand">
+                <span class="brand-icon">
+                    <i data-lucide="sprout"></i>
+                </span>
+                <span>StudyMatch</span>
+            </a>
 
-            <div class="form-group">
-                <label for="course">Select Course</label>
-                <select id="course" onchange="filterStudents()">
-                    <option value="all">All Courses</option>
-                    <option value="CSC340">CSC 340 - Software Engineering</option>
-                    <option value="CSC339">CSC 339 - Concepts of Programming Languages</option>
-                    <option value="CSC362">CSC 362 - System Programming</option>
-                </select>
+            <div class="sidebar-content">
+
+                <p class="sidebar-label">WORKSPACE</p>
+
+                <nav class="sidebar-nav" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link">
+                        <i data-lucide="layout-dashboard"></i>
+                        Dashboard
+                    </a>
+
+                    <a href="manage-courses.html" class="nav-link">
+                        <i data-lucide="book-open"></i>
+                        My Courses
+                    </a>
+
+                    <a href="browse-students.html"
+                       class="nav-link active" aria-current="page">
+                        <i data-lucide="users-round"></i>
+                        Find Students
+                    </a>
+
+                    <a href="browse-groups.html" class="nav-link">
+                        <i data-lucide="messages-square"></i>
+                        Study Groups
+                    </a>
+
+                    <a href="availability.html" class="nav-link">
+                        <i data-lucide="calendar-days"></i>
+                        Availability
+                    </a>
+                </nav>
+
+                <p class="sidebar-label sidebar-label-spaced">MY ACCOUNT</p>
+
+                <nav class="sidebar-nav" aria-label="Account navigation">
+                    <a href="create-profile.html" class="nav-link">
+                        <i data-lucide="user-round-plus"></i>
+                        Create Profile
+                    </a>
+
+                    <a href="edit-profile.html" class="nav-link">
+                        <i data-lucide="user-round-pen"></i>
+                        Edit Profile
+                    </a>
+                </nav>
+
             </div>
 
-        </div>
-
-        <div class="dashboard" id="studentList">
-
-            <div class="card student-card" data-course="CSC340">
-                <h3>Jordan Smith</h3>
-                <p><strong>Major:</strong> Computer Science</p>
-                <p><strong>Course:</strong> CSC 340</p>
-                <p><strong>Study Style:</strong> Collaborative</p>
-                <p><strong>Availability:</strong> Tuesday and Thursday evenings</p>
-
-                <button class="button" onclick="viewStudent('Jordan Smith')">
-                    View Profile
-                </button>
+            <div class="sidebar-bottom">
+                <div class="sidebar-note">
+                    <i data-lucide="heart-handshake"></i>
+                    <p>Better together.</p>
+                    <span>Find your people and make studying easier.</span>
+                </div>
+                <p class="sidebar-copyright">© 2026 StudyMatch</p>
             </div>
 
-            <div class="card student-card" data-course="CSC339">
-                <h3>Maya Johnson</h3>
-                <p><strong>Major:</strong> Computer Science</p>
-                <p><strong>Course:</strong> CSC 339</p>
-                <p><strong>Study Style:</strong> Practice Problems</p>
-                <p><strong>Availability:</strong> Monday and Wednesday afternoons</p>
+        </aside>
 
-                <button class="button" onclick="viewStudent('Maya Johnson')">
-                    View Profile
-                </button>
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <div class="topbar">
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <i data-lucide="chevron-right"></i>
+                    <strong>Find Students</strong>
+                </div>
+
+                <a href="edit-profile.html" class="profile-avatar"
+                   aria-label="Edit your profile">
+                    <i data-lucide="user-round"></i>
+                </a>
             </div>
 
-            <div class="card student-card" data-course="CSC340">
-                <h3>Chris Williams</h3>
-                <p><strong>Major:</strong> Information Systems</p>
-                <p><strong>Course:</strong> CSC 340</p>
-                <p><strong>Study Style:</strong> Discussion Based</p>
-                <p><strong>Availability:</strong> Wednesday and Friday evenings</p>
+            <!-- INTRODUCTION -->
+            <section class="students-heading">
+                <span class="eyebrow">
+                    <i data-lucide="sparkles"></i>
+                    FIND YOUR PEOPLE
+                </span>
 
-                <button class="button" onclick="viewStudent('Chris Williams')">
-                    View Profile
-                </button>
+                <h1>Better together.</h1>
+
+                <p>
+                    Great study sessions start with great connections.
+                    Discover classmates who share your courses,
+                    study habits, and goals.
+                </p>
+            </section>
+
+            <!-- SEARCH AND FILTERS -->
+            <section class="student-search-panel"
+                     aria-label="Find study partners">
+
+                <div class="student-search-title">
+                    <div class="search-heading-icon">
+                        <i data-lucide="search"></i>
+                    </div>
+
+                    <div>
+                        <h2>Discover study partners</h2>
+                        <p>Find someone who matches your study style.</p>
+                    </div>
+                </div>
+
+                <div class="student-filters">
+
+                    <div class="student-search-field">
+                        <label for="studentSearch">Search students</label>
+
+                        <div class="search-input-wrap">
+                            <i data-lucide="search"></i>
+                            <input
+                                type="search"
+                                id="studentSearch"
+                                placeholder="Search by name, major, or study style...">
+                        </div>
+                    </div>
+
+                    <div class="student-course-field">
+                        <label for="course">Filter by course</label>
+
+                        <select id="course">
+                            <option value="all">All Courses</option>
+                            <option value="CSC340">
+                                CSC 340 - Software Engineering
+                            </option>
+                            <option value="CSC339">
+                                CSC 339 - Concepts of Programming Languages
+                            </option>
+                            <option value="CSC362">
+                                CSC 362 - System Programming
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- STUDENT RESULTS -->
+            <section class="students-results">
+
+                <div class="student-results-heading">
+                    <div>
+                        <span class="section-kicker">YOUR COMMUNITY</span>
+                        <h2>Meet your classmates</h2>
+                        <p>Explore students and their study preferences.</p>
+                    </div>
+
+                    <span class="results-count" id="resultsCount"
+                          aria-live="polite">
+                        4 students
+                    </span>
+                </div>
+
+                <div class="student-grid" id="studentList">
+
+                    <!-- JORDAN -->
+                    <article class="student-profile-card"
+                             data-course="CSC340"
+                             data-search="Jordan Smith Computer Science CSC 340 Collaborative Tuesday Thursday evenings">
+
+                        <div class="student-card-top">
+                            <div class="student-initials">JS</div>
+                            <span class="student-course-badge">CSC 340</span>
+                        </div>
+
+                        <h3>Jordan Smith</h3>
+                        <p class="student-major">Computer Science</p>
+
+                        <div class="student-card-divider"></div>
+
+                        <div class="student-detail">
+                            <span class="student-detail-icon">
+                                <i data-lucide="book-open"></i>
+                            </span>
+                            <div>
+                                <small>Study style</small>
+                                <strong>Collaborative</strong>
+                            </div>
+                        </div>
+
+                        <div class="student-detail">
+                            <span class="student-detail-icon">
+                                <i data-lucide="calendar-days"></i>
+                            </span>
+                            <div>
+                                <small>Availability</small>
+                                <strong>Tuesday &amp; Thursday evenings</strong>
+                            </div>
+                        </div>
+
+                        <button type="button" class="view-student-button"
+                                data-name="Jordan Smith"
+                                data-major="Computer Science"
+                                data-course-label="CSC 340"
+                                data-style="Collaborative"
+                                data-availability="Tuesday and Thursday evenings">
+                            View Profile
+                            <i data-lucide="arrow-up-right"></i>
+                        </button>
+                    </article>
+
+                    <!-- MAYA -->
+                    <article class="student-profile-card"
+                             data-course="CSC339"
+                             data-search="Maya Johnson Computer Science CSC 339 Practice Problems Monday Wednesday afternoons">
+
+                        <div class="student-card-top">
+                            <div class="student-initials">MJ</div>
+                            <span class="student-course-badge">CSC 339</span>
+                        </div>
+
+                        <h3>Maya Johnson</h3>
+                        <p class="student-major">Computer Science</p>
+
+                        <div class="student-card-divider"></div>
+
+                        <div class="student-detail">
+                            <span class="student-detail-icon">
+                                <i data-lucide="book-open"></i>
+                            </span>
+                            <div>
+                                <small>Study style</small>
+                                <strong>Practice Problems</strong>
+                            </div>
+                        </div>
+
+                        <div class="student-detail">
+                            <span class="student-detail-icon">
+                                <i data-lucide="calendar-days"></i>
+                            </span>
+                            <div>
+                                <small>Availability</small>
+                                <strong>Monday &amp; Wednesday afternoons</strong>
+                            </div>
+                        </div>
+
+                        <button type="button" class="view-student-button"
+                                data-name="Maya Johnson"
+                                data-major="Computer Science"
+                                data-course-label="CSC 339"
+                                data-style="Practice Problems"
+                                data-availability="Monday and Wednesday afternoons">
+                            View Profile
+                            <i data-lucide="arrow-up-right"></i>
+                        </button>
+                    </article>
+
+                    <!-- CHRIS -->
+                    <article class="student-profile-card"
+                             data-course="CSC340"
+                             data-search="Chris Williams Information Systems CSC 340 Discussion Based Wednesday Friday evenings">
+
+                        <div class="student-card-top">
+                            <div class="student-initials">CW</div>
+                            <span class="student-course-badge">CSC 340</span>
+                        </div>
+
+                        <h3>Chris Williams</h3>
+                        <p class="student-major">Information Systems</p>
+
+                        <div class="student-card-divider"></div>
+
+                        <div class="student-detail">
+                            <span class="student-detail-icon">
+                                <i data-lucide="book-open"></i>
+                            </span>
+                            <div>
+                                <small>Study style</small>
+                                <strong>Discussion Based</strong>
+                            </div>
+                        </div>
+
+                        <div class="student-detail">
+                            <span class="student-detail-icon">
+                                <i data-lucide="calendar-days"></i>
+                            </span>
+                            <div>
+                                <small>Availability</small>
+                                <strong>Wednesday &amp; Friday evenings</strong>
+                            </div>
+                        </div>
+
+                        <button type="button" class="view-student-button"
+                                data-name="Chris Williams"
+                                data-major="Information Systems"
+                                data-course-label="CSC 340"
+                                data-style="Discussion Based"
+                                data-availability="Wednesday and Friday evenings">
+                            View Profile
+                            <i data-lucide="arrow-up-right"></i>
+                        </button>
+                    </article>
+
+                    <!-- TAYLOR -->
+                    <article class="student-profile-card"
+                             data-course="CSC362"
+                             data-search="Taylor Brown Computer Science CSC 362 Collaborative Tuesday afternoons">
+
+                        <div class="student-card-top">
+                            <div class="student-initials">TB</div>
+                            <span class="student-course-badge">CSC 362</span>
+                        </div>
+
+                        <h3>Taylor Brown</h3>
+                        <p class="student-major">Computer Science</p>
+
+                        <div class="student-card-divider"></div>
+
+                        <div class="student-detail">
+                            <span class="student-detail-icon">
+                                <i data-lucide="book-open"></i>
+                            </span>
+                            <div>
+                                <small>Study style</small>
+                                <strong>Collaborative</strong>
+                            </div>
+                        </div>
+
+                        <div class="student-detail">
+                            <span class="student-detail-icon">
+                                <i data-lucide="calendar-days"></i>
+                            </span>
+                            <div>
+                                <small>Availability</small>
+                                <strong>Tuesday afternoons</strong>
+                            </div>
+                        </div>
+
+                        <button type="button" class="view-student-button"
+                                data-name="Taylor Brown"
+                                data-major="Computer Science"
+                                data-course-label="CSC 362"
+                                data-style="Collaborative"
+                                data-availability="Tuesday afternoons">
+                            View Profile
+                            <i data-lucide="arrow-up-right"></i>
+                        </button>
+                    </article>
+
+                </div>
+
+                <!-- NO MATCHES -->
+                <div class="student-empty-state" id="noStudents"
+                     hidden>
+                    <div class="empty-state-icon">
+                        <i data-lucide="search-x"></i>
+                    </div>
+                    <h3>No students found</h3>
+                    <p>
+                        Try another search or select a different course.
+                    </p>
+                    <button type="button" id="clearFilters">
+                        Clear filters
+                    </button>
+                </div>
+
+            </section>
+
+            <!-- BOTTOM BANNER -->
+            <section class="student-bottom-banner">
+                <div class="student-banner-icon">
+                    <i data-lucide="users-round"></i>
+                </div>
+                <div>
+                    <h2>Want to bring everyone together?</h2>
+                    <p>Create a study group and start collaborating.</p>
+                </div>
+                <a href="create-group.html" class="student-banner-link">
+                    Create a Group
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </section>
+
+            <footer class="dashboard-footer">
+                <span>Made for students, by students.</span>
+                <span>StudyMatch © 2026</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- PROFILE PREVIEW DIALOG -->
+    <dialog id="studentDialog" class="student-dialog"
+            aria-labelledby="dialogName">
+
+        <button type="button" class="dialog-close" id="closeDialog"
+                aria-label="Close profile">
+            <i data-lucide="x"></i>
+        </button>
+
+        <div class="dialog-avatar" id="dialogAvatar"></div>
+        <span class="dialog-eyebrow">STUDENT PROFILE</span>
+        <h2 id="dialogName"></h2>
+        <p id="dialogMajor" class="dialog-major"></p>
+
+        <div class="dialog-divider"></div>
+
+        <dl class="dialog-details">
+            <div>
+                <dt>Course</dt>
+                <dd id="dialogCourse"></dd>
             </div>
-
-            <div class="card student-card" data-course="CSC362">
-                <h3>Taylor Brown</h3>
-                <p><strong>Major:</strong> Computer Science</p>
-                <p><strong>Course:</strong> CSC 362</p>
-                <p><strong>Study Style:</strong> Collaborative</p>
-                <p><strong>Availability:</strong> Tuesday afternoons</p>
-
-                <button class="button" onclick="viewStudent('Taylor Brown')">
-                    View Profile
-                </button>
+            <div>
+                <dt>Study Style</dt>
+                <dd id="dialogStyle"></dd>
             </div>
+            <div>
+                <dt>Availability</dt>
+                <dd id="dialogAvailability"></dd>
+            </div>
+        </dl>
 
-        </div>
+        <p class="dialog-note">
+            This is a sample student profile for the StudyMatch prototype.
+        </p>
 
-        <a class="back-button" href="index.html">
-            Back to Dashboard
-        </a>
-
-    </main>
-
-    <footer>
-        <p>StudyMatch &copy; 2026</p>
-    </footer>
+        <button type="button" class="dialog-done" id="doneDialog">
+            Done
+        </button>
+    </dialog>
 
     <script>
-        function filterStudents() {
-            const selectedCourse = document.getElementById("course").value;
-            const students = document.querySelectorAll(".student-card");
+        window.addEventListener("DOMContentLoaded", function () {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
 
-            students.forEach(function(student) {
-                if (selectedCourse === "all" ||
-                    student.dataset.course === selectedCourse) {
-                    student.style.display = "block";
-                } else {
-                    student.style.display = "none";
+            const searchInput = document.getElementById("studentSearch");
+            const courseSelect = document.getElementById("course");
+            const cards = document.querySelectorAll(".student-profile-card");
+            const resultsCount = document.getElementById("resultsCount");
+            const emptyState = document.getElementById("noStudents");
+            const clearFilters = document.getElementById("clearFilters");
+
+            function filterStudents() {
+                const search = searchInput.value.trim().toLowerCase();
+                const course = courseSelect.value;
+                let visible = 0;
+
+                cards.forEach(function (card) {
+                    const matchesSearch =
+                        card.dataset.search.toLowerCase().includes(search);
+
+                    const matchesCourse =
+                        course === "all" || card.dataset.course === course;
+
+                    const show = matchesSearch && matchesCourse;
+                    card.hidden = !show;
+
+                    if (show) {
+                        visible++;
+                    }
+                });
+
+                resultsCount.textContent =
+                    visible + (visible === 1 ? " student" : " students");
+
+                emptyState.hidden = visible !== 0;
+            }
+
+            searchInput.addEventListener("input", filterStudents);
+            courseSelect.addEventListener("change", filterStudents);
+
+            clearFilters.addEventListener("click", function () {
+                searchInput.value = "";
+                courseSelect.value = "all";
+                filterStudents();
+                searchInput.focus();
+            });
+
+            const dialog = document.getElementById("studentDialog");
+            const closeDialog = document.getElementById("closeDialog");
+            const doneDialog = document.getElementById("doneDialog");
+
+            document.querySelectorAll(".view-student-button")
+                .forEach(function (button) {
+                    button.addEventListener("click", function () {
+                        const info = button.dataset;
+
+                        document.getElementById("dialogName")
+                            .textContent = info.name;
+
+                        document.getElementById("dialogMajor")
+                            .textContent = info.major;
+
+                        document.getElementById("dialogCourse")
+                            .textContent = info.courseLabel;
+
+                        document.getElementById("dialogStyle")
+                            .textContent = info.style;
+
+                        document.getElementById("dialogAvailability")
+                            .textContent = info.availability;
+
+                        document.getElementById("dialogAvatar")
+                            .textContent = info.name
+                                .split(" ")
+                                .map(word => word[0])
+                                .join("")
+                                .slice(0, 2);
+
+                        dialog.showModal();
+                    });
+                });
+
+            closeDialog.addEventListener("click", function () {
+                dialog.close();
+            });
+
+            doneDialog.addEventListener("click", function () {
+                dialog.close();
+            });
+
+            dialog.addEventListener("click", function (event) {
+                if (event.target === dialog) {
+                    dialog.close();
                 }
             });
-        }
 
-        function viewStudent(studentName) {
-            alert("Viewing " + studentName + "'s profile.");
-        }
+            filterStudents();
+        });
     </script>
 
 </body>
-
 </html>
-```
