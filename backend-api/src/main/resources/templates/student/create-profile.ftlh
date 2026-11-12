@@ -142,6 +142,13 @@
                         style="color:#526654; font-weight:bold;">
                             Edit Your Profile
                         </a>
+                        <a href="/student/create-group?studentId=${savedStudent.id?c}"
+                           style="display:inline-block;
+                                  margin-top:12px;
+                                  color:#526654;
+                                  font-weight:bold;">
+                        Create a Study Group
+                        </a>
                     </#if>
 
                     <#if errorMessage??>
