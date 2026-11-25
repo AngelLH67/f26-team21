@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.JoinTable;
@@ -27,6 +28,11 @@ public class StudyGroup {
     private String groupName;
 
     private String status;
+
+    private String location;
+
+    @Column(length = 2000)
+    private String description;
 
     private LocalDateTime meetingTime;
 
@@ -108,6 +114,22 @@ public class StudyGroup {
 
     public void setMembers(Set<Student> members) {
         this.members = members;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

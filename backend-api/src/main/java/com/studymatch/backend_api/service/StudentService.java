@@ -42,6 +42,10 @@ public class StudentService {
         student.setEmail(updatedStudent.getEmail());
         student.setStudyPreferences(updatedStudent.getStudyPreferences());
         student.setAvailability(updatedStudent.getAvailability());
+        student.setMajor(updatedStudent.getMajor());
+        student.setClassYear(updatedStudent.getClassYear());
+        student.setPreferredGroupSize(updatedStudent.getPreferredGroupSize());
+        student.setBio(updatedStudent.getBio());
 
         return studentRepository.save(student);
     });
