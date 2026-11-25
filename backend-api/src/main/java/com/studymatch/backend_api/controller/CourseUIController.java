@@ -53,7 +53,6 @@ public class CourseUIController {
     @PostMapping("/courses/{id}/edit")
     public String updateCourse(@PathVariable Long id,
                                @ModelAttribute Course updatedCourse) {
-
         return courseService.getCourseById(id).map(course -> {
             course.setCourseNumber(updatedCourse.getCourseNumber());
             course.setCourseName(updatedCourse.getCourseName());
@@ -70,11 +69,5 @@ public class CourseUIController {
     public String deleteCourse(@PathVariable Long id) {
         courseService.deleteCourse(id);
         return "redirect:/courses";
-    }
-
-    // Display the admin dashboard
-    @GetMapping("/admin")
-    public String adminDashboard() {
-        return "admin";
     }
 }

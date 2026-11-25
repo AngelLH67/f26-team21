@@ -2099,3 +2099,64 @@ footer {
     width: 15px;
     height: 15px;
 }
+
+
+/* REPORT REVIEW POPUP */
+.report-modal[hidden] {
+    display: none;
+}
+
+.report-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.report-modal-content {
+    background: white;
+    width: 100%;
+    max-width: 550px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
+}
+
+.report-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.report-modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.report-modal-actions button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#markViewedButton {
+    background: #426d4b;
+    color: white;
+}
+
+#markViewedButton:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
