@@ -5,62 +5,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyMatch - Add Course</title>
-    <link rel="stylesheet" href="/styles.css">
+    <title>StudyMatch | Add Course</title>
+
+    <link rel="stylesheet" href="/student/styles.css">
+    <link rel="stylesheet" href="/sysadmin/styles.css">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 </head>
 
-<body>
+<body class="dashboard-page admin-page add-course-page">
 
-    <header>
-        <h1>StudyMatch</h1>
-        <nav>
-            <a href="/admin">Dashboard</a>
-        </nav>
-    </header>
+<div class="app-layout">
 
-    <main>
-        <h2>Add Course</h2>
-        <p>Add a new course listing to StudyMatch.</p>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-        <div class="form-container">
+        <a href="/admin" class="brand">
+            <span class="brand-icon">
+                <i data-lucide="sprout"></i>
+            </span>
+            <span>StudyMatch</span>
+        </a>
 
-            <form action="/courses" method="post">
+        <div class="sidebar-content">
 
-                <div class="form-group">
-                    <label for="courseNumber">Course Number</label>
-                    <input type="text" id="courseNumber" name="courseNumber"
-                           placeholder="Example: CSC 340" required>
-                </div>
+            <p class="sidebar-label">ADMIN WORKSPACE</p>
 
-                <div class="form-group">
-                    <label for="courseName">Course Name</label>
-                    <input type="text" id="courseName" name="courseName"
-                           placeholder="Example: Software Engineering" required>
-                </div>
+            <nav class="sidebar-nav" aria-label="Admin navigation">
 
-                <div class="form-group">
-                    <label for="instructor">Instructor</label>
-                    <input type="text" id="instructor" name="instructor"
-                           placeholder="Example: Dr. Smith" required>
-                </div>
+                <a href="/admin" class="nav-link">
+                    <i data-lucide="layout-dashboard"></i>
+                    Overview
+                </a>
 
-                <div class="form-group">
-                    <label for="description">Course Description</label>
-                    <textarea id="description" name="description"
-                              rows="5" placeholder="Enter course description"
-                              required></textarea>
-                </div>
+                <a href="/registered-users" class="nav-link">
+                    <i data-lucide="users-round"></i>
+                    Registered Users
+                </a>
 
-                <button class="action-button" type="submit">
+                <a href="/courses" class="nav-link">
+                    <i data-lucide="book-open"></i>
+                    Course Listings
+                </a>
+
+                <a href="/remove-groups" class="nav-link">
+                    <i data-lucide="messages-square"></i>
+                    Study Groups
+                </a>
+
+                <a href="/reported-users" class="nav-link">
+                    <i data-lucide="shield-alert"></i>
+                    Reported Users
+                </a>
+
+            </nav>
+
+            <p class="sidebar-label sidebar-label-spaced">
+                QUICK ACTIONS
+            </p>
+
+            <nav class="sidebar-nav">
+                <a href="/courses/new" class="nav-link active" aria-current="page">
+                    <i data-lucide="plus-circle"></i>
                     Add Course
-                </button>
+                </a>
+            </nav>
 
-                <a class="back-button" href="/courses">Cancel</a>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-note">
+                <i data-lucide="heart-handshake"></i>
+                <p>Better together.</p>
+                <span>Find your people and make studying easier.</span>
+            </div>
+
+            <p class="sidebar-copyright">© 2026 StudyMatch</p>
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main">
+
+        <div class="topbar">
+            <div class="breadcrumb">
+                <span>Administration</span>
+                <i data-lucide="chevron-right"></i>
+                <strong>Add Course</strong>
+            </div>
+
+            <span class="admin-account-icon" aria-label="Administrator">
+                <i data-lucide="shield-check"></i>
+            </span>
+        </div>
+
+        <!-- PAGE HEADING -->
+        <section class="courses-heading">
+
+            <span class="eyebrow">
+                <i data-lucide="sparkles"></i>
+                ADMIN COURSE WORKSPACE
+            </span>
+
+            <h1>Grow the StudyMatch course catalog.</h1>
+
+            <p>
+                Add a new course listing so students can find
+                classmates taking the same classes.
+            </p>
+
+        </section>
+
+        <!-- FORM OVERVIEW -->
+        <section class="courses-overview">
+
+            <div class="courses-overview-icon">
+                <i data-lucide="book-plus"></i>
+            </div>
+
+            <div class="courses-overview-copy">
+                <span>NEW COURSE LISTING</span>
+                <h2>Every course is a connection.</h2>
+                <p>
+                    Enter the course information below to add
+                    it to the StudyMatch catalog.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- ADD COURSE FORM -->
+        <section class="add-course-form-section">
+
+            <div class="add-course-form-heading">
+                <div class="courses-tools-icon">
+                    <i data-lucide="clipboard-list"></i>
+                </div>
+
+                <div>
+                    <h2>Course information</h2>
+                    <p>Complete all fields to create a course listing.</p>
+                </div>
+            </div>
+
+            <form action="/courses" method="post" class="add-course-form">
+
+                <div class="add-course-field">
+                    <label for="courseNumber">Course Number</label>
+                    <input
+                        type="text"
+                        id="courseNumber"
+                        name="courseNumber"
+                        placeholder="Example: CSC 340"
+                        required>
+                </div>
+
+                <div class="add-course-field">
+                    <label for="courseName">Course Name</label>
+                    <input
+                        type="text"
+                        id="courseName"
+                        name="courseName"
+                        placeholder="Example: Software Engineering"
+                        required>
+                </div>
+
+                <div class="add-course-field">
+                    <label for="instructor">Instructor</label>
+                    <input
+                        type="text"
+                        id="instructor"
+                        name="instructor"
+                        placeholder="Example: Dr. Smith"
+                        required>
+                </div>
+
+                <div class="add-course-field">
+                    <label for="description">Course Description</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="5"
+                        placeholder="Enter course description"
+                        required></textarea>
+                </div>
+
+                <div class="add-course-form-actions">
+
+                    <a href="/courses" class="add-course-cancel">
+                        Cancel
+                    </a>
+
+                    <button type="submit" class="add-course-submit">
+                        <i data-lucide="plus"></i>
+                        Add Course
+                    </button>
+
+                </div>
 
             </form>
 
-        </div>
+        </section>
+
+        <footer class="dashboard-footer">
+            <span>Made for students, by students.</span>
+            <span>StudyMatch © 2026</span>
+        </footer>
+
     </main>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    });
+</script>
 
 </body>
 </html>
