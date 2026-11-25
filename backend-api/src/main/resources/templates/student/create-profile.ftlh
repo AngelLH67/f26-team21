@@ -131,7 +131,7 @@
                             <p>A little introduction goes a long way.</p>
                         </div>
                     </div>
-
+                    
                     <#if savedStudent??>
                         <p role="status" style="color: #426D4B;">
                             Profile created successfully!
@@ -205,7 +205,7 @@
                                     minlength="8"
                                     required>
                             </div>
-
+  
                             <div class="profile-field">
                                 <label for="major">Major</label>
                                 <input

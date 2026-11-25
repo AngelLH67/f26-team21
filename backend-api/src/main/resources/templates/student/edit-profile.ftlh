@@ -227,7 +227,7 @@
                             <div class="profile-field profile-field-full">
 
                                 <label for="year">Class Year</label>
-
+                     
                             <select id="year" name="year" required>
                                 <#list [
                                     "Freshman",
@@ -267,7 +267,7 @@
                                     Preferred Study Style
                                 </label>
 
-
+                                
                                 <select id="studyStyle" name="studyStyle" required>
                                     <#list [
                                         "Quiet / Independent",

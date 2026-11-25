@@ -1,82 +1,590 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyMatch - Manage Courses</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>StudyMatch | Manage Courses</title>
+    <link rel="stylesheet" href="../student/styles.css">
+    <link rel="stylesheet" href="styles.css"
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 </head>
 
-<body>
+<body class="dashboard-page admin-page manage-courses-page">
 
-    <header>
-        <h1> StudyMatch</h1>
-        <nav>
-            <a href="index.html">Dashboard</a>
-        </nav>
-    </header>
+    <div class="app-layout">
 
-    <main>
-        <h2>Manage Course Listings</h2>
-        <p>Manage the courses available to StudyMatch users.</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Course</th>
-                    <th>Course Name</th>
-                    <th>Instructor</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="courseTable">
-                <tr>
-                    <td>CHE 114</td>
-                    <td>General Chemistry II</td>
-                    <td>Dr. Bridges</td>
-                    <td> <button class="action-button"> Edit </button>
-                        <button class="action-button delete-button"> Remove </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>MAT 196</td>
-                    <td>Calculus I</td>
-                    <td>B. Davis</td>
-                    <td> <button class="action-button"> Edit </button>
-                        <button class="action-button delete-button"> Remove </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>PSY 121</td>
-                    <td>General Psychology</td>
-                    <td>H. Honeycutt</td>
-                    <td> <button class="action-button"> Edit </button>
-                        <button class="action-button delete-button"> Remove </button>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>CSC 130</td>
-                    <td>Intro to Computer Science</td>
-                    <td>T. Gaines</td>
-                    <td> <button class="action-button"> Edit </button>
-                        <button class="action-button delete-button"> Remove </button>
-                    </td>
-                </tr>
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
 
-            </tbody>
-        </table>
-        <a class="action-button add-course-button" href="add-courses.html">
-            + Add Course
-        </a>
-
-        <div>
-            <a class="back-button" href="index.html">
-                Back to Dashboard
+            <a href="index.html" class="brand">
+                <span class="brand-icon">
+                    <i data-lucide="sprout"></i>
+                </span>
+                <span>StudyMatch</span>
             </a>
+
+            <div class="sidebar-content">
+                <p class="sidebar-label">ADMIN WORKSPACE</p>
+
+                
+                <nav class="sidebar-nav" aria-label="Admin navigation">
+
+                    <a href="index.html" class="nav-link">
+                        <i data-lucide="layout-dashboard"></i>
+                        Overview
+                    </a>
+
+                    <a href="registered-users.html" class="nav-link">
+                        <i data-lucide="users-round"></i>
+                        Registered Users
+                    </a>
+
+                    <a href="manage-courses.html"
+                    class="nav-link active"
+                    aria-current="page">
+                        <i data-lucide="book-open"></i>
+                        Course Listings
+                    </a>
+
+                    <a href="remove-groups.html" class="nav-link">
+                        <i data-lucide="messages-square"></i>
+                        Study Groups
+                    </a>
+
+                    <a href="reported-users.html" class="nav-link">
+                        <i data-lucide="shield-alert"></i>
+                        Reported Users
+                    </a>
+
+                </nav>
+
+                <p class="sidebar-label sidebar-label-spaced">
+                    QUICK ACTIONS
+                </p>
+
+                <nav class="sidebar-nav" aria-label="Quick actions">
+
+                    <a href="add-courses.html" class="nav-link">
+                        <i data-lucide="plus-circle"></i>
+                        Add Course
+                    </a>
+
+                </nav>
+
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-note">
+                    <i data-lucide="heart-handshake"></i>
+                    <p>Better together.</p>
+                    <span>Find your people and make studying easier.</span>
+                </div>
+                <p class="sidebar-copyright">© 2026 StudyMatch</p>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <div class="topbar">
+                <div class="breadcrumb">
+                    <span>Administration</span>
+                    <i data-lucide="chevron-right"></i>
+                    <strong>Manage Courses</strong>
+                </div>
+
+                <span class="admin-account-icon" aria-label="Administrator">
+                    <i data-lucide="shield-check"></i>
+                </span>
+            </div>
+
+            <!-- INTRO -->
+            <section class="courses-heading">
+                <span class="eyebrow">
+                    <i data-lucide="sparkles"></i>
+                    ADMIN COURSE WORKSPACE
+                </span>
+
+                <h1>Keep the course catalog organized.</h1>
+
+                <p>
+                    Browse and manage the course listings available
+                    on StudyMatch. A well-organized course catalog
+                    makes connecting with classmates easier.
+                </p>
+            </section>
+
+            <!-- OVERVIEW -->
+            <section class="courses-overview">
+
+                <div class="courses-overview-icon">
+                    <i data-lucide="library-big"></i>
+                </div>
+
+                <div class="courses-overview-copy">
+                    <span>COURSE CATALOG</span>
+                    <h2>Every course is a connection.</h2>
+                    <p>
+                        Keep course information up to date so
+                        students can find their classmates.
+                    </p>
+                </div>
+
+                <div class="courses-overview-count">
+                    <strong id="totalCourses">4</strong>
+                    <span>Course listings</span>
+                </div>
+
+            </section>
+
+            <!-- SEARCH BAR -->
+            <section class="courses-tools">
+
+                <div class="courses-tools-heading">
+                    <div class="courses-tools-icon">
+                        <i data-lucide="book-open"></i>
+                    </div>
+
+                    <div>
+                        <h2>Manage course listings</h2>
+                        <p>Search, edit, or remove a course.</p>
+                    </div>
+                </div>
+
+                <div class="courses-tools-actions">
+                    <div class="courses-search-wrap">
+                        <i data-lucide="search"></i>
+                        <input
+                            type="search"
+                            id="courseSearch"
+                            aria-label="Search courses"
+                            placeholder="Search courses or instructors...">
+                    </div>
+
+                    <a href="add-courses.html" class="courses-add-button">
+                        <i data-lucide="plus"></i>
+                        Add Course
+                    </a>
+                </div>
+
+            </section>
+
+            <!-- COURSE LIST -->
+            <section class="courses-list-section">
+
+                <div class="courses-results-heading">
+                    <div>
+                        <span class="section-kicker">
+                            ALL COURSE LISTINGS
+                        </span>
+                        <h2>Course catalog</h2>
+                        <p>Explore the courses available on StudyMatch.</p>
+                    </div>
+
+                    <span class="courses-results-count"
+                          id="visibleCourseCount"
+                          aria-live="polite">
+                        4 courses
+                    </span>
+                </div>
+
+                <div class="managed-courses-grid" id="courseList">
+                    <!-- Course cards are generated below -->
+                </div>
+
+                <div class="courses-empty-state" id="noCourses" hidden>
+                    <span class="courses-empty-icon">
+                        <i data-lucide="search-x"></i>
+                    </span>
+                    <h3>No courses found</h3>
+                    <p>Try a different search to find a course.</p>
+                    <button type="button" id="clearCourseSearch">
+                        Clear Search
+                    </button>
+                </div>
+
+            </section>
+
+            <!-- BOTTOM BANNER -->
+            <section class="courses-bottom-banner">
+
+                <div class="courses-bottom-icon">
+                    <i data-lucide="plus-circle"></i>
+                </div>
+
+                <div>
+                    <h2>Have another course to add?</h2>
+                    <p>
+                        Help grow the StudyMatch course catalog.
+                    </p>
+                </div>
+
+                <a href="add-courses.html" class="courses-bottom-link">
+                    Add a Course
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+
+            </section>
+
+            <footer class="dashboard-footer">
+                <span>Made for students, by students.</span>
+                <span>StudyMatch © 2026</span>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- EDIT COURSE DIALOG -->
+    <dialog id="editCourseDialog" class="course-dialog"
+            aria-labelledby="editCourseTitle">
+
+        <div class="course-dialog-heading">
+            <div class="course-dialog-icon">
+                <i data-lucide="pencil"></i>
+            </div>
+            <div>
+                <span class="dialog-eyebrow">COURSE MANAGEMENT</span>
+                <h2 id="editCourseTitle">Edit course</h2>
+            </div>
         </div>
-    </main>
+
+        <form id="editCourseForm">
+
+            <div class="course-dialog-field">
+                <label for="editCourseCode">Course Number</label>
+                <input id="editCourseCode" type="text" required>
+            </div>
+
+            <div class="course-dialog-field">
+                <label for="editCourseName">Course Name</label>
+                <input id="editCourseName" type="text" required>
+            </div>
+
+            <div class="course-dialog-field">
+                <label for="editInstructor">Instructor</label>
+                <input id="editInstructor" type="text" required>
+            </div>
+
+            <div class="course-dialog-actions">
+                <button type="button" class="course-dialog-cancel"
+                        id="cancelCourseEdit">
+                    Cancel
+                </button>
+
+                <button type="submit" class="course-dialog-save">
+                    Save Changes
+                </button>
+            </div>
+
+        </form>
+    </dialog>
+
+    <!-- REMOVE CONFIRMATION -->
+    <dialog id="removeCourseDialog" class="course-dialog"
+            aria-labelledby="removeCourseTitle">
+
+        <div class="course-remove-icon">
+            <i data-lucide="trash-2"></i>
+        </div>
+
+        <h2 id="removeCourseTitle">Remove this course?</h2>
+
+        <p id="removeCourseMessage"></p>
+
+        <p class="course-dialog-note">
+            This only removes the course from the current
+            prototype view. No database records are changed.
+        </p>
+
+        <div class="course-dialog-actions">
+            <button type="button" class="course-dialog-cancel"
+                    id="cancelCourseRemove">
+                Keep Course
+            </button>
+
+            <button type="button" class="course-dialog-remove"
+                    id="confirmCourseRemove">
+                Remove Course
+            </button>
+        </div>
+
+    </dialog>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            // Sample course data from the original prototype.
+            // Changes are in-memory only and reset on refresh.
+            let courses = [
+                {
+                    id: 1,
+                    code: "CHE 114",
+                    name: "General Chemistry II",
+                    instructor: "Dr. Bridges"
+                },
+                {
+                    id: 2,
+                    code: "MAT 196",
+                    name: "Calculus I",
+                    instructor: "B. Davis"
+                },
+                {
+                    id: 3,
+                    code: "PSY 121",
+                    name: "General Psychology",
+                    instructor: "H. Honeycutt"
+                },
+                {
+                    id: 4,
+                    code: "CSC 130",
+                    name: "Intro to Computer Science",
+                    instructor: "T. Gaines"
+                }
+            ];
+
+            const courseList = document.getElementById("courseList");
+            const searchInput = document.getElementById("courseSearch");
+            const totalCourses = document.getElementById("totalCourses");
+            const visibleCount = document.getElementById("visibleCourseCount");
+            const emptyState = document.getElementById("noCourses");
+
+            const editDialog = document.getElementById("editCourseDialog");
+            const editForm = document.getElementById("editCourseForm");
+            const removeDialog = document.getElementById("removeCourseDialog");
+
+            let editingId = null;
+            let removingId = null;
+
+            function addElement(parent, tag, className, content) {
+                const element = document.createElement(tag);
+
+                if (className) {
+                    element.className = className;
+                }
+
+                if (content !== undefined) {
+                    element.textContent = content;
+                }
+
+                parent.appendChild(element);
+                return element;
+            }
+
+            function renderCourses() {
+                const query = searchInput.value.trim().toLowerCase();
+
+                const filtered = courses.filter(function (course) {
+                    const text = [
+                        course.code,
+                        course.name,
+                        course.instructor
+                    ].join(" ").toLowerCase();
+
+                    return text.includes(query);
+                });
+
+                courseList.replaceChildren();
+
+                filtered.forEach(function (course) {
+                    const card = document.createElement("article");
+                    card.className = "managed-course-card";
+
+                    const top = addElement(card, "div", "managed-course-top");
+
+                    const iconBox = addElement(
+                        top, "span", "managed-course-icon"
+                    );
+                    iconBox.innerHTML = '<i data-lucide="book-open"></i>';
+
+                    addElement(
+                        top, "span", "managed-course-badge", course.code
+                    );
+
+                    addElement(card, "h3", "", course.name);
+
+                    addElement(
+                        card, "p", "managed-course-code",
+                        course.code
+                    );
+
+                    const divider = addElement(
+                        card, "div", "managed-course-divider"
+                    );
+
+                    divider.setAttribute("aria-hidden", "true");
+
+                    const instructor = addElement(
+                        card, "div", "managed-course-instructor"
+                    );
+
+                    addElement(
+                        instructor, "span", "", "INSTRUCTOR"
+                    );
+
+                    addElement(
+                        instructor, "strong", "", course.instructor
+                    );
+
+                    const actions = addElement(
+                        card, "div", "managed-course-actions"
+                    );
+
+                    const editButton = addElement(
+                        actions, "button", "course-edit-button",
+                        "Edit"
+                    );
+                    editButton.type = "button";
+                    editButton.addEventListener("click", function () {
+                        openEditDialog(course.id);
+                    });
+
+                    const removeButton = addElement(
+                        actions, "button", "course-remove-button",
+                        "Remove"
+                    );
+                    removeButton.type = "button";
+                    removeButton.addEventListener("click", function () {
+                        openRemoveDialog(course.id);
+                    });
+
+                    courseList.appendChild(card);
+                });
+
+                totalCourses.textContent = courses.length;
+
+                visibleCount.textContent =
+                    filtered.length +
+                    (filtered.length === 1 ? " course" : " courses");
+
+                emptyState.hidden = filtered.length !== 0;
+
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
+            }
+
+            function openEditDialog(id) {
+                const course = courses.find(function (item) {
+                    return item.id === id;
+                });
+
+                if (!course) {
+                    return;
+                }
+
+                editingId = id;
+
+                document.getElementById("editCourseCode").value =
+                    course.code;
+
+                document.getElementById("editCourseName").value =
+                    course.name;
+
+                document.getElementById("editInstructor").value =
+                    course.instructor;
+
+                editDialog.showModal();
+            }
+
+            editForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                if (!editForm.reportValidity()) {
+                    return;
+                }
+
+                const course = courses.find(function (item) {
+                    return item.id === editingId;
+                });
+
+                if (!course) {
+                    return;
+                }
+
+                course.code =
+                    document.getElementById("editCourseCode")
+                        .value.trim();
+
+                course.name =
+                    document.getElementById("editCourseName")
+                        .value.trim();
+
+                course.instructor =
+                    document.getElementById("editInstructor")
+                        .value.trim();
+
+                editDialog.close();
+                editingId = null;
+                renderCourses();
+            });
+
+            function openRemoveDialog(id) {
+                const course = courses.find(function (item) {
+                    return item.id === id;
+                });
+
+                if (!course) {
+                    return;
+                }
+
+                removingId = id;
+
+                document.getElementById("removeCourseMessage")
+                    .textContent =
+                    'Are you sure you want to remove "' +
+                    course.code + " - " + course.name + '"?';
+
+                removeDialog.showModal();
+            }
+
+            document.getElementById("confirmCourseRemove")
+                .addEventListener("click", function () {
+                    courses = courses.filter(function (course) {
+                        return course.id !== removingId;
+                    });
+
+                    removingId = null;
+                    removeDialog.close();
+                    renderCourses();
+                });
+
+            document.getElementById("cancelCourseEdit")
+                .addEventListener("click", function () {
+                    editDialog.close();
+                });
+
+            document.getElementById("cancelCourseRemove")
+                .addEventListener("click", function () {
+                    removeDialog.close();
+                });
+
+            editDialog.addEventListener("close", function () {
+                editingId = null;
+            });
+
+            removeDialog.addEventListener("close", function () {
+                removingId = null;
+            });
+
+            searchInput.addEventListener("input", renderCourses);
+
+            document.getElementById("clearCourseSearch")
+                .addEventListener("click", function () {
+                    searchInput.value = "";
+                    renderCourses();
+                    searchInput.focus();
+                });
+
+            renderCourses();
+        });
+    </script>
 
 </body>
-
 </html>

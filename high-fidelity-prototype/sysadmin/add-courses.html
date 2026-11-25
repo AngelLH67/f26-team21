@@ -1,34 +1,322 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyMatch - Add Course</title>
+    <title>StudyMatch | Add Course</title>
+    <link rel="stylesheet" href="../student/styles.css"
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 </head>
 
-<body>
-    <header>
-        <h1>StudyMatch</h1>
-        <nav> <a href="index.html">Dashboard</a> </nav>
-    </header>
-    <main>
-        <h2>Add Course</h2>
-        <p>Add a new course listing to StudyMatch.</p>
-        <div class="form-container">
-            <div class="form-group"> <label for="courseNumber">Course Number</label> <input type="text"
-                    id="courseNumber" placeholder="Example: CSC 340"> </div>
-            <div class="form-group"> <label for="courseName">Course Name</label> <input type="text" id="courseName"
-                    placeholder="Example: Software Engineering"> </div>
-            <div class="form-group"> <label for="instructor">Instructor</label> <input type="text" id="instructor"
-                    placeholder="Example: Dr. Smith"> </div>
-            <div class="form-group"> <label for="description">Course Description</label> <textarea id="description"
-                    rows="5" placeholder="Enter course description"></textarea> </div> <button class="action-button">
-                Add Course </button> <a class="back-button" href="manage-courses.html"> Cancel
-            </a>
-        </div>
-    </main>
-</body>
+<body class="dashboard-page profile-page admin-page">
 
+    <div class="app-layout">
+
+        <!-- SIDEBAR -->
+        
+        <aside class="sidebar">
+
+            <a href="index.html" class="brand">
+                <span class="brand-icon">
+                    <i data-lucide="sprout"></i>
+                </span>
+                <span>StudyMatch</span>
+            </a>
+
+            <div class="sidebar-content">
+
+                <p class="sidebar-label">ADMIN WORKSPACE</p>
+
+                <nav class="sidebar-nav" aria-label="Admin navigation">
+
+                    <a href="index.html" class="nav-link">
+                        <i data-lucide="layout-dashboard"></i>
+                        Overview
+                    </a>
+
+                    <a href="registered-users.html" class="nav-link">
+                        <i data-lucide="users-round"></i>
+                        Registered Users
+                    </a>
+
+                    <a href="manage-courses.html"
+                    class="nav-link active"
+                    aria-current="page">
+                        <i data-lucide="book-open"></i>
+                        Course Listings
+                    </a>
+
+                    <a href="remove-groups.html" class="nav-link">
+                        <i data-lucide="messages-square"></i>
+                        Study Groups
+                    </a>
+
+                    <a href="reported-users.html" class="nav-link">
+                        <i data-lucide="shield-alert"></i>
+                        Reported Users
+                    </a>
+
+                </nav>
+
+                <p class="sidebar-label sidebar-label-spaced">
+                    QUICK ACTIONS
+                </p>
+
+                <nav class="sidebar-nav" aria-label="Quick actions">
+
+                    <a href="add-courses.html" class="nav-link">
+                        <i data-lucide="plus-circle"></i>
+                        Add Course
+                    </a>
+
+                </nav>
+
+            </div>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-note">
+                    <i data-lucide="shield-check"></i>
+                    <p>Keeping StudyMatch safe.</p>
+                    <span>
+                        Support a welcoming and productive
+                        study community.
+                    </span>
+                </div>
+
+                <p class="sidebar-copyright">© 2026 StudyMatch</p>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <div class="topbar">
+                <div class="breadcrumb">
+                    <span>Administration</span>
+                    <i data-lucide="chevron-right"></i>
+                    <strong>My Courses</strong>
+                </div>
+
+                <span class="admin-account-icon" aria-label="Administrator">
+                    <i data-lucide="shield-check"></i>
+                </span>
+            </div>
+
+            <!-- PAGE HEADING -->
+            <section class="profile-heading">
+                <span class="eyebrow">
+                    <i data-lucide="sparkles"></i>
+                    ADMIN COURSE MANAGEMENT
+                </span>
+
+                <h1>Grow the StudyMatch catalog.</h1>
+
+                <p>
+                    Add a new course listing to help students
+                    find classmates and study groups.
+                    Keep the catalog organized and up to date.
+                </p>
+            </section>
+
+            <div class="profile-layout">
+
+                <!-- COURSE FORM -->
+                <section class="profile-form-card">
+
+                    <div class="form-card-heading">
+                        <div class="form-heading-icon">
+                            <i data-lucide="book-open"></i>
+                        </div>
+
+                        <div>
+                            <h2>Add a course</h2>
+                            <p>Start with a few details about your class.</p>
+                        </div>
+                    </div>
+
+                    <form id="addCourseForm">
+
+                        <div class="form-section-heading">
+                            <span class="form-section-number">01</span>
+
+                            <div>
+                                <h3>Course Information</h3>
+                                <p>Tell us about your class.</p>
+                            </div>
+                        </div>
+
+                        <div class="profile-form-grid">
+
+                            <div class="profile-field">
+                                <label for="courseNumber">
+                                    Course Number
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="courseNumber"
+                                    name="courseNumber"
+                                    placeholder="e.g. CSC 340"
+                                    required>
+                            </div>
+
+                            <div class="profile-field">
+                                <label for="courseName">
+                                    Course Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="courseName"
+                                    name="courseName"
+                                    placeholder="e.g. Software Engineering"
+                                    required>
+                            </div>
+
+                            <div class="profile-field profile-field-full">
+                                <label for="instructor">
+                                    Instructor
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="instructor"
+                                    name="instructor"
+                                    placeholder="e.g. Dr. Smith"
+                                    required>
+                            </div>
+
+                        </div>
+
+                        <div class="form-section-heading preferences-heading">
+                            <span class="form-section-number">02</span>
+
+                            <div>
+                                <h3>Additional Details</h3>
+                                <p>Give students a little more context.</p>
+                            </div>
+                        </div>
+
+                        <div class="profile-form-grid">
+                            <div class="profile-field profile-field-full">
+                                <label for="description">
+                                    Course Description
+                                </label>
+
+                                <textarea
+                                    id="description"
+                                    name="description"
+                                    rows="5"
+                                    placeholder="What topics does this course cover?"
+                                ></textarea>
+
+                                <span class="field-hint">
+                                    A short description helps students
+                                    identify the right course.
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- ACTIONS -->
+                        <div class="profile-form-actions">
+                            <a href="manage-courses.html" class="profile-cancel">
+                                Cancel
+                            </a>
+
+                            <button type="submit" class="profile-save">
+                                <i data-lucide="plus"></i>
+                                Add Course
+                            </button>
+                        </div>
+
+                    </form>
+
+                </section>
+
+                <!-- SIDE PANEL -->
+                <aside class="profile-tips">
+
+                    <div class="tips-icon">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+
+                    <span class="tips-label">LEARN TOGETHER</span>
+
+                    <h2>Every class is a new connection.</h2>
+
+                    <p>
+                        StudyMatch helps students find classmates
+                        taking the same courses, making it easier
+                        to learn together.
+                    </p>
+
+                    <div class="tips-divider"></div>
+
+                    <div class="tip-item">
+                        <i data-lucide="check-circle-2"></i>
+                        <span>Keep course names and numbers accurate.</span>
+                    </div>
+
+                    <div class="tip-item">
+                        <i data-lucide="check-circle-2"></i>
+                        <span>Add instructor information when available.</span>
+                    </div>
+
+                    <div class="tip-item">
+                        <i data-lucide="check-circle-2"></i>
+                        <span>Connect with students in your classes.</span>
+                    </div>
+
+                    <div class="tips-decoration" aria-hidden="true">
+                        <i data-lucide="book-open"></i>
+                    </div>
+
+                </aside>
+
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="dashboard-footer">
+                <span>Made for students, by students.</span>
+                <span>StudyMatch © 2026</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            const form = document.getElementById("addCourseForm");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                if (!form.reportValidity()) {
+                    return;
+                }
+
+                // Frontend prototype only.
+                // No course is saved to the database yet.
+                alert("Course added successfully! (Prototype preview)");
+
+                window.location.href = "manage-courses.html";
+            });
+
+        });
+    </script>
+
+</body>
 </html>

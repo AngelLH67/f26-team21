@@ -1,60 +1,507 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyMatch - Registered Users</title>
-    <link rel="stylesheet" href=styles.css>
+    <title>StudyMatch | Registered Users</title>
+
+    <link rel="stylesheet" href="../student/styles.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 </head>
 
-<body>
+<body class="dashboard-page admin-page registered-users-page">
 
-    <header>
-        <h1>StudyMatch</h1>
-        <nav> <a href="index.html">Dashboard</a> </nav>
-    </header>
-    <main>
-        <h2>Registered Users</h2>
-        <p>View users currently registered on StudyMatch.</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Registered Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Alex Johnson</td>
-                    <td>alex@example.com</td>
-                    <td>Student</td>
-                    <td>09/01/2026</td>
-                </tr>
-                <tr>
-                    <td>Jordan Smith</td>
-                    <td>jordan@example.com</td>
-                    <td>Student</td>
-                    <td>09/03/2026</td>
-                </tr>
-                <tr>
-                    <td>Taylor Brown</td>
-                    <td>taylor@example.com</td>
-                    <td>Student</td>
-                    <td>09/05/2026</td>
-                </tr>
-                <tr>
-                    <td>Sam Davis</td>
-                    <td>sam@example.com</td>
-                    <td>Student</td>
-                    <td>09/07/2026</td>
-                </tr>
-            </tbody>
-        </table> <a class="back-button" href="index.html"> Back to Dashboard </a>
-    </main>
+    <div class="app-layout">
+
+        <!-- ADMIN SIDEBAR -->
+        <aside class="sidebar">
+
+            <a href="index.html" class="brand">
+                <span class="brand-icon">
+                    <i data-lucide="sprout"></i>
+                </span>
+                <span>StudyMatch</span>
+            </a>
+
+            <div class="sidebar-content">
+
+                <p class="sidebar-label">ADMIN WORKSPACE</p>
+
+                <nav class="sidebar-nav" aria-label="Admin navigation">
+
+                    <a href="index.html" class="nav-link">
+                        <i data-lucide="layout-dashboard"></i>
+                        Overview
+                    </a>
+
+                    <a href="registered-users.html"
+                       class="nav-link active"
+                       aria-current="page">
+                        <i data-lucide="users-round"></i>
+                        Registered Users
+                    </a>
+
+                    <a href="manage-courses.html" class="nav-link">
+                        <i data-lucide="book-open"></i>
+                        Course Listings
+                    </a>
+
+                    <a href="remove-groups.html" class="nav-link">
+                        <i data-lucide="messages-square"></i>
+                        Study Groups
+                    </a>
+
+                    <a href="reported-users.html" class="nav-link">
+                        <i data-lucide="shield-alert"></i>
+                        Reported Users
+                    </a>
+
+                </nav>
+
+                <p class="sidebar-label sidebar-label-spaced">
+                    QUICK ACTIONS
+                </p>
+
+                <nav class="sidebar-nav" aria-label="Quick actions">
+
+                    <a href="add-courses.html" class="nav-link">
+                        <i data-lucide="plus-circle"></i>
+                        Add Course
+                    </a>
+
+                </nav>
+
+            </div>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-note">
+                    <i data-lucide="shield-check"></i>
+                    <p>Keeping StudyMatch safe.</p>
+                    <span>
+                        Support a welcoming and productive
+                        study community.
+                    </span>
+                </div>
+
+                <p class="sidebar-copyright">© 2026 StudyMatch</p>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <div class="topbar">
+
+                <div class="breadcrumb">
+                    <span>Administration</span>
+                    <i data-lucide="chevron-right"></i>
+                    <strong>Registered Users</strong>
+                </div>
+
+                <span class="admin-account-icon"
+                      aria-label="Administrator">
+                    <i data-lucide="shield-check"></i>
+                </span>
+
+            </div>
+
+            <!-- PAGE HEADING -->
+            <section class="admin-users-heading">
+
+                <span class="eyebrow">
+                    <i data-lucide="sparkles"></i>
+                    OUR STUDYMATCH COMMUNITY
+                </span>
+
+                <h1>The people behind StudyMatch.</h1>
+
+                <p>
+                    Get to know the community you're supporting.
+                    Browse registered users and keep track of
+                    the students who make StudyMatch possible.
+                </p>
+
+            </section>
+
+            <!-- OVERVIEW BANNER -->
+            <section class="admin-users-overview">
+
+                <div class="admin-users-overview-icon">
+                    <i data-lucide="users-round"></i>
+                </div>
+
+                <div class="admin-users-overview-copy">
+                    <span>COMMUNITY OVERVIEW</span>
+                    <h2>Every student matters.</h2>
+                    <p>
+                        A growing community of learners
+                        connecting through shared goals.
+                    </p>
+                </div>
+
+                <div class="admin-users-stat">
+                    <strong id="totalUsers">4</strong>
+                    <span>Registered users</span>
+                </div>
+
+            </section>
+
+            <!-- USER DIRECTORY -->
+            <section class="admin-users-directory">
+
+                <div class="admin-users-directory-heading">
+
+                    <div class="admin-users-directory-icon">
+                        <i data-lucide="contact-round"></i>
+                    </div>
+
+                    <div>
+                        <h2>User directory</h2>
+                        <p>Search and browse registered accounts.</p>
+                    </div>
+
+                </div>
+
+                <div class="admin-users-filters">
+
+                    <div class="admin-users-search">
+
+                        <label for="userSearch">
+                            Search users
+                        </label>
+
+                        <div class="admin-users-search-wrap">
+                            <i data-lucide="search"></i>
+
+                            <input
+                                type="search"
+                                id="userSearch"
+                                placeholder="Search by name or email...">
+                        </div>
+
+                    </div>
+
+                    <div class="admin-users-role-filter">
+
+                        <label for="roleFilter">
+                            Filter by role
+                        </label>
+
+                        <select id="roleFilter">
+                            <option value="all">All Roles</option>
+                            <option value="student">Student</option>
+                            <option value="sysadmin">SysAdmin</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- RESULTS -->
+            <section class="admin-users-results">
+
+                <div class="admin-users-results-heading">
+
+                    <div>
+                        <span class="section-kicker">
+                            REGISTERED ACCOUNTS
+                        </span>
+
+                        <h2>All users</h2>
+
+                        <p>
+                            View user information and registration details.
+                        </p>
+                    </div>
+
+                    <span class="admin-users-count"
+                          id="visibleUserCount"
+                          aria-live="polite">
+                        4 users
+                    </span>
+
+                </div>
+
+                <div class="admin-users-table-card">
+
+                    <div class="admin-users-table-scroll">
+
+                        <table class="admin-users-table">
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">Student</th>
+                                    <th scope="col">Email Address</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Registered</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="registeredUsersTable">
+
+                                <tr data-role="student"
+                                    data-search="alex johnson alex@example.com student">
+
+                                    <td>
+                                        <div class="admin-user-identity">
+                                            <span class="admin-user-avatar">
+                                                AJ
+                                            </span>
+
+                                            <span class="admin-user-name">
+                                                Alex Johnson
+                                            </span>
+                                        </div>
+                                    </td>
+
+                                    <td class="admin-user-email">
+                                        alex@example.com
+                                    </td>
+
+                                    <td>
+                                        <span class="admin-role-badge">
+                                            <i data-lucide="graduation-cap"></i>
+                                            Student
+                                        </span>
+                                    </td>
+
+                                    <td class="admin-user-date">
+                                        Sep 1, 2026
+                                    </td>
+                                </tr>
+
+                                <tr data-role="student"
+                                    data-search="jordan smith jordan@example.com student">
+
+                                    <td>
+                                        <div class="admin-user-identity">
+                                            <span class="admin-user-avatar">
+                                                JS
+                                            </span>
+
+                                            <span class="admin-user-name">
+                                                Jordan Smith
+                                            </span>
+                                        </div>
+                                    </td>
+
+                                    <td class="admin-user-email">
+                                        jordan@example.com
+                                    </td>
+
+                                    <td>
+                                        <span class="admin-role-badge">
+                                            <i data-lucide="graduation-cap"></i>
+                                            Student
+                                        </span>
+                                    </td>
+
+                                    <td class="admin-user-date">
+                                        Sep 3, 2026
+                                    </td>
+                                </tr>
+
+                                <tr data-role="student"
+                                    data-search="taylor brown taylor@example.com student">
+
+                                    <td>
+                                        <div class="admin-user-identity">
+                                            <span class="admin-user-avatar">
+                                                TB
+                                            </span>
+
+                                            <span class="admin-user-name">
+                                                Taylor Brown
+                                            </span>
+                                        </div>
+                                    </td>
+
+                                    <td class="admin-user-email">
+                                        taylor@example.com
+                                    </td>
+
+                                    <td>
+                                        <span class="admin-role-badge">
+                                            <i data-lucide="graduation-cap"></i>
+                                            Student
+                                        </span>
+                                    </td>
+
+                                    <td class="admin-user-date">
+                                        Sep 5, 2026
+                                    </td>
+                                </tr>
+
+                                <tr data-role="student"
+                                    data-search="sam davis sam@example.com student">
+
+                                    <td>
+                                        <div class="admin-user-identity">
+                                            <span class="admin-user-avatar">
+                                                SD
+                                            </span>
+
+                                            <span class="admin-user-name">
+                                                Sam Davis
+                                            </span>
+                                        </div>
+                                    </td>
+
+                                    <td class="admin-user-email">
+                                        sam@example.com
+                                    </td>
+
+                                    <td>
+                                        <span class="admin-role-badge">
+                                            <i data-lucide="graduation-cap"></i>
+                                            Student
+                                        </span>
+                                    </td>
+
+                                    <td class="admin-user-date">
+                                        Sep 7, 2026
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <!-- NO RESULTS -->
+                    <div class="admin-users-empty" id="noUsers" hidden>
+
+                        <span class="admin-users-empty-icon">
+                            <i data-lucide="search-x"></i>
+                        </span>
+
+                        <h3>No users found</h3>
+
+                        <p>
+                            Try a different name, email, or role.
+                        </p>
+
+                        <button type="button" id="clearUserFilters">
+                            Clear Filters
+                        </button>
+
+                    </div>
+
+                    <div class="admin-users-table-footer">
+                        <span>Sample records · Frontend prototype</span>
+                        <span id="tableFooterCount">Showing 4 of 4 users</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="dashboard-footer">
+                <span>Supporting students, one connection at a time.</span>
+                <span>StudyMatch © 2026</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            const searchInput =
+                document.getElementById("userSearch");
+
+            const roleFilter =
+                document.getElementById("roleFilter");
+
+            const rows = document.querySelectorAll(
+                "#registeredUsersTable tr"
+            );
+
+            const visibleCount =
+                document.getElementById("visibleUserCount");
+
+            const totalCount =
+                document.getElementById("totalUsers");
+
+            const footerCount =
+                document.getElementById("tableFooterCount");
+
+            const emptyState =
+                document.getElementById("noUsers");
+
+            function filterUsers() {
+
+                const search = searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+                const role = roleFilter.value;
+                let visible = 0;
+
+                rows.forEach(function (row) {
+
+                    const matchesSearch =
+                        row.dataset.search.includes(search);
+
+                    const matchesRole =
+                        role === "all" ||
+                        row.dataset.role === role;
+
+                    const show = matchesSearch && matchesRole;
+
+                    row.hidden = !show;
+
+                    if (show) {
+                        visible++;
+                    }
+
+                });
+
+                totalCount.textContent = rows.length;
+
+                visibleCount.textContent =
+                    visible + (visible === 1 ? " user" : " users");
+
+                footerCount.textContent =
+                    "Showing " + visible +
+                    " of " + rows.length + " users";
+
+                emptyState.hidden = visible !== 0;
+            }
+
+            searchInput.addEventListener("input", filterUsers);
+            roleFilter.addEventListener("change", filterUsers);
+
+            document.getElementById("clearUserFilters")
+                .addEventListener("click", function () {
+
+                    searchInput.value = "";
+                    roleFilter.value = "all";
+
+                    filterUsers();
+                    searchInput.focus();
+
+                });
+
+            filterUsers();
+        });
+    </script>
 
 </body>
-
 </html>
