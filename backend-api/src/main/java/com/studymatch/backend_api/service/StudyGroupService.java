@@ -1,24 +1,24 @@
 
 package com.studymatch.backend_api.service;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.studymatch.backend_api.entity.StudyGroup;
-import com.studymatch.backend_api.repository.StudyGroupRepository;
-import com.studymatch.backend_api.entity.Student;
-import com.studymatch.backend_api.repository.StudentRepository;
 import com.studymatch.backend_api.entity.Course;
+import com.studymatch.backend_api.entity.Student;
+import com.studymatch.backend_api.entity.StudyGroup;
 import com.studymatch.backend_api.repository.CourseRepository;
+import com.studymatch.backend_api.repository.StudentRepository;
+import com.studymatch.backend_api.repository.StudyGroupRepository;
 
 @Service
 public class StudyGroupService {
@@ -37,8 +37,16 @@ public class StudyGroupService {
     }
 
 
+    @Transactional(readOnly = true)
     public List<StudyGroup> getAllStudyGroups() {
-        return studyGroupRepository.findAll();
+
+    List<StudyGroup> groups = studyGroupRepository.findAll();
+
+        for (StudyGroup group : groups) {
+        group.getMembers().size();
+        }
+
+        return groups;
     }
 
     public Optional<StudyGroup> getStudyGroupById(Long id) {

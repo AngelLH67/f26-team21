@@ -2160,3 +2160,61 @@ footer {
     opacity: 0.6;
     cursor: wait;
 }
+
+/* Study Group Status Badges */
+
+.group-status-badge,
+.group-action-badge {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+}
+
+/* Green Active Badge */
+
+.active-badge {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+/* Red Reported Badge */
+
+.reported-badge {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Remove Button */
+
+.group-action-badge {
+    cursor: pointer;
+}
+
+.group-action-badge:hover {
+    background-color: #fecaca;
+}
+
+button.moderation-status {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+button.moderation-status:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+button.moderation-status.reported {
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button.moderation-status.reported:hover {
+    background-color: #F3DFD0;
+    transform: translateY(-1px);
+}

@@ -47,7 +47,7 @@
                         Course Listings
                     </a>
 
-                    <a href="/remove-groups" class="nav-link">
+                    <a href="/study-groups" class="nav-link">
                         <i data-lucide="messages-square"></i>
                         Study Groups
                     </a>
@@ -196,7 +196,7 @@
                         </span>
                     </a>
 
-                    <a href="/remove-groups" class="admin-management-card">
+                    <a href="/study-groups" class="admin-management-card">
                         <span class="admin-card-icon">
                             <i data-lucide="messages-square"></i>
                         </span>
@@ -278,3 +278,4 @@
 
 </body>
 </html>
+```
